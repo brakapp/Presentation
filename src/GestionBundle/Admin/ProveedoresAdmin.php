@@ -73,31 +73,17 @@ class ProveedoresAdmin extends Admin
                 )))
         ;
     }
-    public function postPersist($proveedores)
-    {
-        $proveedores->upload();
+    public function prePersist($proveedores) {
+        $this->saveFile($proveedores);
     }
 
-    public function prePersist($proveedores)
-    {
-        $this->manageFileUpload($proveedores);
-    }
-
-    public function preUpdate($proveedores)
-    {
-        $this->manageFileUpload($proveedores);
-    }
-
-    private function manageFileUpload($proveedores)
-    {
-        if ($proveedores->getFile()) {
-           // $proveedores->refreshUpdated();
-        }
+    public function preUpdate($proveedores) {
+        $this->saveFile($proveedores);
     }
 
     public function saveFile($proveedores) {
         $basepath = $this->getRequest()->getBasePath();
-        $proveedores->upload();
+        $proveedores->upload($basepath);
     }
 
     protected function configureRoutes(RouteCollection $collection)

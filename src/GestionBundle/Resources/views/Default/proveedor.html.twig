@@ -35,7 +35,7 @@
                         <fieldset>
                             <div class="coll-1">
                                 {{ form_errors(form.cedula)  }}
-                                {{ form_label(form.cedula) }}
+                                {{ form_label(form.cedula, "Cedula - NIT") }}
                                 {{ form_widget(form.cedula) }}
                             </div>
                             <div class="coll-2">
@@ -70,7 +70,7 @@
                             <div>
                                 <div class="coll-1">
                                     {{ form_errors(form.file)  }}
-                                    {{ form_label(form.file) }}
+                                    {{ form_label(form.file, 'Propuesta') }}
                                     {{ form_widget(form.file, {'attr':{'type':'file'}}) }}
                                 </div>
                                 <div class="coll-2" style="display: none;">

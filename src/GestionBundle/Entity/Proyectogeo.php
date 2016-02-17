@@ -128,7 +128,7 @@ class Proyectogeo
         // sanitize it at least to avoid any security issues
 
         //capturo al extencion original del archivo
-        $ext = $this->file->guessClientExtension();
+        $ext = $this->file->getClientOriginalExtension();
         $new_name = $this->getUploadDir().'/'. mt_rand(0,9999999999).".".$ext;
 
 
