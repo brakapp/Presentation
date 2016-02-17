@@ -1,0 +1,152 @@
+<?php
+
+namespace PruebaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Categoria
+ *
+ * @ORM\Table(name="categoria")
+ * @ORM\Entity(repositoryClass="PruebaBundle\Repository\CategoriaRepository")
+ */
+class Categoria
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=100)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Producto", mappedBy="categoria")
+     */
+    protected $productos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Seleccion", mappedBy="categoria")
+     */
+    protected $selecciones;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Categoria
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->productos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add productos
+     *
+     * @param \PruebaBundle\Entity\Producto $productos
+     * @return Categoria
+     */
+    public function addProducto(\PruebaBundle\Entity\Producto $productos)
+    {
+        $this->productos[] = $productos;
+
+        return $this;
+    }
+
+    /**
+     * Remove productos
+     *
+     * @param \PruebaBundle\Entity\Producto $productos
+     */
+    public function removeProducto(\PruebaBundle\Entity\Producto $productos)
+    {
+        $this->productos->removeElement($productos);
+    }
+
+    /**
+     * Get productos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductos()
+    {
+        return $this->productos;
+    }
+
+    /**
+     * Add selecciones
+     *
+     * @param \PruebaBundle\Entity\Seleccion $selecciones
+     * @return Categoria
+     */
+    public function addSeleccione(\PruebaBundle\Entity\Seleccion $selecciones)
+    {
+        $this->selecciones[] = $selecciones;
+
+        return $this;
+    }
+
+    /**
+     * Remove selecciones
+     *
+     * @param \PruebaBundle\Entity\Seleccion $selecciones
+     */
+    public function removeSeleccione(\PruebaBundle\Entity\Seleccion $selecciones)
+    {
+        $this->selecciones->removeElement($selecciones);
+    }
+
+    /**
+     * Get selecciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSelecciones()
+    {
+        return $this->selecciones;
+    }
+
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+}

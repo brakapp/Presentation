@@ -1,0 +1,99 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}En construccion{% endblock %}
+
+{% block extracontent %}
+
+{% endblock %}
+{% block body %}
+
+
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content" >
+        <div class="row-6">
+
+
+            <div class="container">
+                <div class="row">
+                    <article class="span4">
+                        <h2>Datos de Contacto</h2>
+                        <address class="address-1">
+                            <em>Direccion:</em>
+                            <p>Calle 12 No. 8-42 Oficina 221
+                                Valledupar - Cesar.
+                                .</p>
+                            <em>Telefono: </em>
+                            <p class="border2"> <span>+57 (5) 5704263</span>
+                        </address>
+                    </article>
+                    <article class="span8">
+                        <h2>Envianos tu Propuesta</h2>
+
+                        <form action="{{ path('home_proveedor') }}" method="post" enctype="multipart/form-data">
+                        {{ form_start(form) }}
+                        <fieldset>
+                            <div class="coll-1">
+                                {{ form_errors(form.cedula)  }}
+                                {{ form_label(form.cedula) }}
+                                {{ form_widget(form.cedula) }}
+                            </div>
+                            <div class="coll-2">
+                                {{ form_errors(form.nombre)  }}
+                                {{ form_label(form.nombre) }}
+                                {{ form_widget(form.nombre) }}
+                            </div>
+                            <div class="coll-3">
+                                {{ form_errors(form.direccion)  }}
+                                {{ form_label(form.direccion) }}
+                                {{ form_widget(form.direccion) }}
+                            </div>
+                            <div class="clear"></div>
+                            <div>
+                                <div class="coll-1">
+                                    {{ form_errors(form.telefono)  }}
+                                    {{ form_label(form.telefono) }}
+                                    {{ form_widget(form.telefono) }}
+                                </div>
+                                <div class="coll-2">
+                                    {{ form_errors(form.departamento)  }}
+                                    {{ form_label(form.departamento) }}
+                                    {{ form_widget(form.departamento) }}
+                                </div>
+                                <div class="coll-3">
+                                    {{ form_errors(form.ciudad)  }}
+                                    {{ form_label(form.ciudad) }}
+                                    {{ form_widget(form.ciudad) }}
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div>
+                                <div class="coll-1">
+                                    {{ form_errors(form.file)  }}
+                                    {{ form_label(form.file) }}
+                                    {{ form_widget(form.file, {'attr':{'type':'file'}}) }}
+                                </div>
+                                <div class="coll-2" style="display: none;">
+                                    {{ form_errors(form.urldocumento)  }}
+                                    {{ form_label(form.urldocumento) }}
+                                    {{ form_widget(form.urldocumento, {'value' : 'none'}) }}
+                                </div>
+
+                            </div>
+
+                            <div class="clear"></div>
+                            <div>
+                                <input type="submit" value="Enviar Propuesta" class="button">
+
+                            </div>
+                        </fieldset>
+                        {{ form_end(form) }}
+                        </form>
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

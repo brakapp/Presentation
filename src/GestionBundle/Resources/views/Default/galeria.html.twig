@@ -1,0 +1,50 @@
+{% extends 'base2.html.twig' %}
+{% block title %}Nuestra Empresa{% endblock %}
+{% block extracontent %}
+
+{% endblock %}
+{% block body %}
+    <!--============================== content =================================-->
+{% for imagen in imagenes %}
+    {{ imgen.nombre }}
+{% endfor %}
+    <div id="content" class="extra-content">
+        <div class="row-7">
+            <div class="container">
+                <div class="row policy">
+                    <article class="span2  term">
+
+                        <h2 class="title2"></h2>
+                        <img src="" width="150px" alt="">
+                        <ul class="menu-lat">
+                            <li ><a href="#" class="top" id="info">Información</a></li>
+                            <li><a href="#" id="geo">Ubicación</a></li>
+                            <li><a href="#" id="pnl">Planos</a></li>
+                            <li><a href="{{ path('') }}" >Galeria de Fotos</a></li>
+                            <li><a href="{{ path('home_contactar') }}" class="bot">Contacto</a></li>
+                        </ul>
+
+
+                    </article>
+                    <article class="span10 pull-right ">
+                        <section>
+                            <div id="container">
+
+
+                                {% for imagen in imagenes %}
+                                    <div onclick="galery(this)">
+                                        <img src="{{ asset(imagen.imagen) }}"/>
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+                        </section>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

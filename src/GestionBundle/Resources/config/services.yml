@@ -1,0 +1,168 @@
+services:
+    sonata.admin.cargos:
+        class: GestionBundle\Admin\CargosAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Cargos' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Cargos
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.ciudad:
+        class: GestionBundle\Admin\CiudadAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Ciudades' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Ciudad
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.contacto:
+        class: GestionBundle\Admin\ContactoAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Mensajes Contactar' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Contacto
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+
+   # sonata.admin.curriculums:
+    #    class: GestionBundle\Admin\CurriculumsAdmin
+     #   tags:
+      #      - { name: sonata.admin, manager_type:orm, group:'Archivos', label:'Hojas de Vida' }
+       # arguments:
+        #    - ~
+         #   - GestionBundle\Entity\Curriculums
+          #  - ~
+        #calls:
+        #    - [setTranslationDomain, [GestionBundle]]
+
+
+
+    sonata.admin.dpto:
+        class: GestionBundle\Admin\DptoAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Departamento de la Emprsa' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Dpto
+            - ~
+        calls:
+        - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.documentos:
+        class: GestionBundle\Admin\DocumentosAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Archivos', label:'Documentos' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Documentos
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.personal:
+        class: GestionBundle\Admin\PersonalAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Encargados de la empresa' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Personal
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.proveedores:
+        class: GestionBundle\Admin\ProveedoresAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Proveedores' }
+        arguments:
+            - null
+            - GestionBundle\Entity\Proveedores
+            - GestionBundle:CRUD
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+
+
+    sonata.admin.departamento:
+        class: GestionBundle\Admin\DepartamentoAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Departamentos' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Departamento
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.proyecto:
+        class: GestionBundle\Admin\ProyectosAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Proyectos' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Proyectos
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    #sonata.admin.product:
+     #   class: GestionBundle\Admin\ProductAdmin
+      #  tags:
+       #     - { name: sonata.admin, manager_type:orm, group: 'Archivos', label:'Archivos' }
+        #arguments:
+         #   - ~
+          #  - GestionBundle\Entity\Product
+           # - ~
+        #calls:
+         #   - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.proyectoimg:
+        class: GestionBundle\Admin\ProyectoimgAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group: 'Archivos', label:'Imagenes del Proyecto' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Proyectoimg
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.planos:
+        class: GestionBundle\Admin\PlanosAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group: 'Archivos', label:'Planos del Proyecto' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Planos
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+
+    gestion.admin.curriculum:
+        class: GestionBundle\Admin\CurriculumsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Archivos' , label: Hojas de Vida }
+        arguments:
+            - null
+            - GestionBundle\Entity\Curriculums
+            - GestionBundle:CRUD
+
+    sonata.admin.proyectogeo:
+        class: GestionBundle\Admin\ProyectogeoAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group: 'Archivos', label:'Ubicacion del Proyecto' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Proyectogeo
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]

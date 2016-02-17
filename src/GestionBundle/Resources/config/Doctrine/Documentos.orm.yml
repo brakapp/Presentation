@@ -1,0 +1,24 @@
+GestionBundle\Entity\Documentos:
+    type: entity
+    repositoryClass: GestionBundle\Repository\DocumentosRepository
+    table: documentos
+    id:
+    id:
+        type:         integer
+        generator:    { strategy: AUTO }
+    fields:
+    ruta:
+        type:         string
+        length:       255
+
+    # changed when files are uploaded, to force preUpdate and postUpdate to fire
+    updated:
+        type:         datetime
+        nullable:     true
+
+    # ... other fields ...
+    lifecycleCallbacks:
+    prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ preUpload, setUpdatedAtValue ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]

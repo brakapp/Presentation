@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <meta charset="utf-8">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <meta name="description" content="Your description">
+        <meta name="keywords" content="Your keywords">
+        <meta name="author" content="Your name">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ asset('css/camera.css') }}" type="text/css" media="screen">
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400,300,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ asset('css/custom.css')}}" type="text/css" media="screen">
+
+        <script type="text/javascript" src="{{ asset('js/jquery.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.carouFredSel-6.2.0.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.mobile.customized.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.touchSwipe.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/superfish.js')}}"></script>
+        <script type='text/javascript' src="{{ asset('js/camera.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.mobilemenu.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.ui.totop.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.equalheights.js')}}"></script>
+        <script>
+            $(window).load( function(){
+                jQuery('.camera_wrap').camera();
+
+
+                //	Responsive layout, resizing the items
+                $('#carousel1').carouFredSel({
+                    auto: false,
+                    responsive: true,
+                    width: '100%',
+                    scroll: 1,
+                    prev: '#prev',
+                    next: '#next',
+                    pagination: true,
+                    mousewheel: false,
+                    swipe: {
+                        onMouse: true,
+                        onTouch: true
+                    },
+                    items: {
+                        width:157,
+                        height: '350px',	//	optionally resize item-height
+                        visible: {
+                            min: 1,
+                            max: 5
+                        }
+                    }
+                });
+
+
+                $('#tab_preview a').click(function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                })
+            });
+        </script>
+
+
+
+
+        {% block stylesheets %}
+            <style>
+                .bghead
+                {
+                    background: #375BA9 !important;
+                }
+
+                a.active
+                {
+                    color: #FFF !important;
+                    text-decoration: underline !important;
+                }
+
+                ul li a:hover
+                {
+                    color: #FFF !important;
+                }
+
+                ul li ul li a:hover
+                {
+                    color: #5A5A5A !important;
+                }
+            </style>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <header>
+
+        <div class="bghead">
+            <div class="container">
+                <div class="navbar navbar_ clearfix extra">
+                    <h1 class="brand"><a href="index.html"><img alt="Architecture ST" src="{{ asset('img/logo.png') }}" width="150px"></a></h1>
+                    <div class="nav-collapse nav-collapse_  collapse">
+                        <ul class="nav sf-menu">
+                            <li ><a href="{{ path('home_page') }}">Inicio</a></li>
+                            <li><a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Quienes Somos</a>
+                                <ul>
+                                    <li><a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Misión</a></li>
+                                    <li><a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Visón</a></li>
+                                    <!--<li><a href="{{ path('home_page',{'page':'construccion'}) }}">Objetivos</a></li>-->
+                                    <!-- <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Politicas</a></li>-->
+                                </ul>
+                            </li>
+                            <li><a href="{{ path('home_page',{'page':'proyectos'}) }}">Proyectos</a>
+                                <ul>
+                                    <li><a href="{{ path('home_page',{'page':'proyectos'}) }}">Vivienda</a></li>
+                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Construidos</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Eventos</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('home_page',{'page':'construccion'}) }}">Cliente</a>
+                                <ul>
+
+                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Servicio post-venta</a>
+                                        <ul>
+                                            <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Centor de acabados</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Pagos online</a></li>
+                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Preguntas frecuentes</a></li>
+                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Quejas y reclamos</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Desarrollo social</a></li>
+                            <li><a href="{{ path('home_proveedor') }}">Ser Proveedor</a></li>
+                            <li><a href="{{ path('home_page',{'page':'trabajeconnosotros'}) }}">Trabaje con nosotros</a></li>
+                            <li><a href="{{ path('home_contactar') }}">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                {% block extracontent %}
+                {% endblock %}
+            </div>
+        </div>
+    </header>
+        {% block body %}{% endblock %}
+    <!--============aside==========-->
+    <aside>
+        <div class="container">
+            <div class="row">
+                <article class="span3 maxheight">
+                    <h4>Contactenos</h4>
+                    <address class="address">
+                        <p>
+                            <span>Telefono 1:</span> +57 (5) 5704263<br>
+                            <span>Telefono 2:</span> +57 (5) 5707863<br>
+                            <span>Telefono 3:</span> +57 (5) 5707863
+                        </p>
+                        <div class="mail">E-mail: <a href="mailto:#">mail@demolink.org</a></div>
+                    </address>
+                </article>
+                <article class="span3 maxheight">
+                    <h4>Visitanos</h4>
+                    <address class="address">
+                        <p>Calle 12 No. 8-42 Oficina 221 <br>
+                            Valledupar - Cesar.
+                        </p>
+
+                    </address>
+                </article>
+                <article class="span3 maxheight">
+                    <h4>Nuestra Compañia</h4>
+                    <div class="men-cont1">
+
+                        <ul class="list3">
+                            <li>
+                                <a href="{{ path('home_page') }}">Inicio</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Quienes Somos</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('home_page',{'page':'proyectos'}) }}">Proyectos</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('home_page',{'page':'construccion'}) }}">Sala de prensa</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('home_page',{'page':'construccion'}) }}">Cliente</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('home_page',{'page':'construccion'}) }}">Desarrollo social</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="men-cont2">
+                        <ul class="list3">
+                            <li>
+                                <a href="{{ path('home_proveedor') }}">Ser proveedor</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('home_page',{'page':'trabajeconnosotros'}) }}">Trabaje con nosotros</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('home_contactar') }}">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </article>
+                <article class="span3 maxheight">
+                    <h4>Siguenos</h4>
+                    <div class="list-soc clearfix">
+                        <a href="#"><img alt="" src="{{ asset('img/soc_icon1.png') }}"></a>
+                        <a href="#"><img alt="" src="{{ asset('img/soc_icon2.png') }}"></a>
+                        <a href="#"><img alt="" src="{{ asset('img/soc_icon3.png') }}"></a>
+                        <a href="#"><img alt="" src="{{ asset('img/soc_icon4.png') }}"></a>
+                    </div>
+                    <a href="index.html"><img src="{{ asset('img/smalllogo.png') }}" alt=""></a>
+                </article>
+            </div>
+        </div>
+    </aside>
+    <footer>
+        <div class="container clearfix">
+            <div class="privacy"><span class="txt-1">ORBE PLAZA CENTRO DE NEGOCIOS &copy; 2016 </span><a class="txt-1" href="index-5.html">Politica de Privacidad</a>&nbsp; </div></div>
+    </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,81 @@
+{% extends 'base2.html.twig' %}
+{% block title %}Proyectos{% endblock %}
+{% block extracontent %}
+
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        .menup
+        {
+            margin-top:30px;
+
+        }
+
+        .imgl
+        {
+            width: 93px;
+            height: 93px;
+            padding: 5px;
+            background: #FFF;
+            border-radius:3px;
+            -webkit-box-shadow: 0px 3px 10px 0px rgba(50, 50, 50, 1);
+            -moz-box-shadow:    0px 3px 10px 0px rgba(50, 50, 50, 1);
+            box-shadow:         0px 3px 10px 0px rgba(50, 50, 50, 1);
+            text-align: center;
+            font-size: 10px;
+            line-height: 10px;
+            color:#333;
+        }
+
+        .imgl a{
+            display: block;
+            height: 100px;
+            margin-bottom: 14px;
+        }
+
+        .viv
+        {
+            background: url({{ asset('img/vivienda.png') }}) no-repeat;
+            padding: 10px 60px;
+        }
+
+
+    </style>
+{% endblock %}
+{% block body %}
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content">
+        <div class="row-7">
+            <div class="container">
+                <div class="row policy">
+                    <article class="span2  term">
+
+                    </article>
+                    <article class="span12 menup" >
+                        <div class="row">
+                            <div class="span2"></div>
+                            <div class="span8"><h1 class="viv">Vivienda</h1></div>
+                        </div>
+                        <div class="row">
+
+                            {% for proyecto in proyectData %}
+                                <div class="span2">
+                                    <div class="imgl">
+                                        <a href="{{ path('home_proyectos',{'item': proyecto.id}) }}"><img src="{{ asset(proyecto.icono) }}" alt=""></a>
+
+                                        <p>{{ proyecto.nombre }}</p>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

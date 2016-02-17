@@ -1,0 +1,367 @@
+{% extends 'base2.html.twig' %}
+{# receive vars from controller and set vars pages #}
+{% set nombre, direccion, latitud, longitud, descripcion, icono =  "","","","","","" %}
+    {% for pjd in proyectData %}
+
+        {% set nombre, direccion, latitud, longitud, descripcion, icono =  pjd.nombre, pjd.direccion, pjd.latitud, pjd.longitud, pjd.descripcion, pjd.icono %}
+
+    {% endfor %}
+{% block title %}Proyecto{% endblock %}
+{% block stylesheets %}
+    
+    <style>
+        .camera_wrap
+        {
+            height: 350px !important;
+        }
+
+        .headtop
+        {
+            color: #355aa7 !important;
+            background-image: none !important;
+        }
+
+        .headtop a, .textstyle1{
+            color: #355aa7 !important;
+        }
+
+        h4, .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs li a,.nav-collapse_, .nav ul li a span
+        {
+            color: #355aa7 !important;
+        }
+
+        .link
+        {
+            background: #355aa7 !important;
+        }
+
+        .nav-collapse_ .nav>li>a
+        {
+            font-size: 13px !important;
+            padding:12px 15px !important;
+        }
+
+        .nav-collapse_ .nav>li>a:hover
+        {
+            color: #FFF !important;
+            text-decoration: underline;
+        }
+
+        .nav-collapse_ .nav>li>a .sf-sub-indicator
+        {
+            right: 3px !important;
+        }
+
+
+        .nav-collapse_ .nav ul li a
+        {
+            font-size: 10px !important;
+        }
+
+        .menu-lat
+        {
+            margin:0;
+            margin-top: 30px !important;
+            padding: 0;
+        }
+        .menu-lat li
+        {
+            border-bottom: thin solid #FFF;
+        }
+        .menu-lat li a
+        {
+            width: 150px;
+            display: block;
+            color: #FFF;
+            padding: 10px;
+            background: #355aa7;
+
+        }
+
+        .top
+        {
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .bot
+        {
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .lista, .lista2
+        {
+            margin: 0 0 0 18px;
+            padding: 0;
+            list-style-type: disc !important;
+        }
+
+        .lista2
+        {
+            margin: 0 !important;
+            list-style-type: none  !important;
+            margin-bottom: 10px !important;
+        }
+
+        /*.lista2 li:before{content: "-"}*/
+
+        @import url(http://fonts.googleapis.com/css?family=Istok+Web);
+        @keyframes slidy {
+            0% { left: 0%; }
+            20% { left: 0%; }
+            25% { left: -100%; }
+            45% { left: -100%; }
+            50% { left: -200%; }
+            70% { left: -200%; }
+            75% { left: -300%; }
+            95% { left: -300%; }
+            100% { left: -400%; }
+        }
+        body, figure {
+            margin: 0; background: #101010;
+            font-family: Istok Web, sans-serif;
+            font-weight: 100;
+        }
+        div#captioned-gallery {
+            width: 100%; overflow: hidden;
+        }
+        figure.slider {
+            position: relative; width: 500%;
+            font-size: 0; animation: 30s slidy infinite;
+        }
+        figure.slider figure {
+            width: 20%; height: auto;
+            display: inline-block;  position: inherit;
+        }
+        figure.slider img { width: 100%; height: auto; }
+        figure.slider figure figcaption {
+            position: absolute; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            color: #fff; width: 100%;
+            font-size: 2rem; padding: .6rem;
+        }
+
+        #test{
+
+        }
+
+        .text
+        {
+            margin: 20px auto;
+            border: 1px dashed #C0C0C0;
+            width: 980px;
+            height: 400px;
+        }
+        .camera_wrap
+        {
+            height: 350px !important;
+        }
+
+        .cnt2, .cnt3, .cnt4
+        {
+            display: none;
+        }
+
+        .none
+        {
+            display: none;
+        }
+
+
+
+
+
+    </style>
+    <link rel="stylesheet" href="{{ asset('css/galery.css')  }}" media="all">
+{% endblock %}
+{% block javascripts %}
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('js/gmap3.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            var btnInfo = $("#info");
+            var btnUbicacion = $("#geo");
+            var btnPnl = $("#pnl");
+            var btnGal = $("#gal");
+
+
+            btnInfo.click(function(e){
+                e.preventDefault();
+                $(".cnt2").hide();
+                $(".cnt3").hide();
+                $(".cnt4").hide();
+                $(".cnt1").slideDown();
+            });
+
+            btnUbicacion.click(function(e){
+                e.preventDefault();
+
+                $("#test").addClass('text');
+                $(".cnt1").hide()
+                $(".cnt3").hide();
+                $(".cnt4").hide();
+                $(".cnt2").slideDown();
+
+            });
+            btnPnl.click(function(e){
+                e.preventDefault();
+                $(".cnt1").hide();
+                $(".cnt2").hide();
+                $(".cnt4").hide();
+                $(".cnt3").slideDown();
+
+            });
+            btnGal.click(function(e){
+                e.preventDefault();
+                $(".cnt1").hide();
+                $(".cnt2").hide();
+                $(".cnt3").hide();
+                $(".cnt4").slideDown();
+
+            });
+
+            var latitud = '{{ latitud  }}';
+            var longitud = '{{ longitud }}';
+            $("#test").gmap3({
+                marker:{
+                    latLng: [ latitud, longitud],
+                    options:{
+                        draggable:true
+                    },
+                    events:{
+                        dragend: function(marker){
+                            $(this).gmap3({
+                                getaddress:{
+                                    latLng:marker.getPosition(),
+                                    callback:function(results){
+                                        var map = $(this).gmap3("get"),
+                                                infowindow = $(this).gmap3({get:"infowindow"}),
+                                                content = results && results[1] ? results && results[1].formatted_address : "no address";
+                                        if (infowindow){
+                                            infowindow.open(map, marker);
+                                            infowindow.setContent(content);
+                                        } else {
+                                            $(this).gmap3({
+                                                infowindow:{
+                                                    anchor:marker,
+                                                    options:{content: content}
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                },
+                map:{
+                    options:{
+                        zoom: 16
+                    }
+                }
+            });
+
+        });
+    </script>
+
+
+{% endblock %}
+
+{% block extracontent %}
+
+{% endblock %}
+{% block body %}
+{#variables#}
+
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content content1">
+        <div class="row-7 ">
+            <div class="container">
+                <div class="row policy">
+                    <article class="span2  term">
+
+                        <h2 class="title2">{{ nombre }}</h2>
+                        <img src="{{ asset(icono) }}" width="150px" alt="">
+                        <ul class="menu-lat">
+                            <li ><a href="#" class="top" id="info">Información</a></li>
+                            <li><a href="#" id="geo">Ubicación</a></li>
+                            <li><a href="#" id="pnl">Planos</a></li>
+                            <li><a href="#" id="gal">Galeria de Fotos</a></li>
+                            <li><a href="{{ path('home_contactar') }}" class="bot">Contacto</a></li>
+                        </ul>
+
+
+                    </article>
+                    <article class="span10 pull-right cnt1">
+                        <h2 class="title2"></h2>
+                        <div id="captioned-gallery">
+                            <figure class="slider">
+                                {% for img in imagenes %}
+                                    <figure>
+                                        <img src="{{ asset(img.imagen) }}" alt>
+
+                                    </figure>
+
+                                {% endfor %}
+
+                            </figure>
+                        </div>
+                        <br>
+                        <div>
+
+                            {{ descripcion | raw }}
+                        </div>
+                    </article>
+                    <article class="span10 pull-right cnt2">
+                        <h2 class="title2"></h2>
+                        <div id="tests">
+                            {% for geo in geos %}
+                                <img src="{{ asset(geo.imagen) }}" alt="">
+                            {% endfor %}
+
+                        </div>
+                        <br>
+                        <div>
+                            <p>
+                                <strong>Direccion</strong>: Calle
+                            </p>
+
+                        </div>
+                    </article>
+                    <article class="span10 pull-right cnt3">
+                        <section>
+                            <div id="container">
+
+
+                                {% for plano in planos %}
+                                    <div onclick="galery(this)">
+                                        <img src="{{ asset(plano.urlplano) }}"/>
+                                        <span>{{ asset(plano.nombre) }}</span>
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+                        </section>
+                    </article>
+
+                    <article class="span10 pull-right cnt4">
+                        <section>
+                            <div id="container2">
+                                {% for gal in galeria %}
+                                    <div onclick="galery(this)">
+                                        <img src="{{ asset(gal.imagen) }}"/>
+                                        <span></span>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
