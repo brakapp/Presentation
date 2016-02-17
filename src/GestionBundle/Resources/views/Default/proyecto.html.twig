@@ -166,18 +166,21 @@
             display: none;
         }
 
-
-
-
-
     </style>
+
+    <link href="{{ asset('css/least.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/galery.css')  }}" media="all">
 {% endblock %}
 {% block javascripts %}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('js/gmap3.min.js') }}"></script>
+
+    <script src="{{ asset('js/libs/least/least.min.js') }} "></script> 
+    
+
     <script>
         $(document).ready(function(){
+            $('.least-gallery').least();
             var btnInfo = $("#info");
             var btnUbicacion = $("#geo");
             var btnPnl = $("#pnl");
@@ -189,6 +192,7 @@
                 $(".cnt2").hide();
                 $(".cnt3").hide();
                 $(".cnt4").hide();
+                $(".gale").hide();
                 $(".cnt1").slideDown();
             });
 
@@ -199,6 +203,7 @@
                 $(".cnt1").hide()
                 $(".cnt3").hide();
                 $(".cnt4").hide();
+                $(".gale").hide();
                 $(".cnt2").slideDown();
 
             });
@@ -207,6 +212,7 @@
                 $(".cnt1").hide();
                 $(".cnt2").hide();
                 $(".cnt4").hide();
+                $(".gale").slideDown();
                 $(".cnt3").slideDown();
 
             });
@@ -215,6 +221,7 @@
                 $(".cnt1").hide();
                 $(".cnt2").hide();
                 $(".cnt3").hide();
+                $(".gale").slideDown();
                 $(".cnt4").slideDown();
 
             });
@@ -328,35 +335,43 @@
 
                         </div>
                     </article>
-                    <article class="span10 pull-right cnt3">
-                        <section>
-                            <div id="container">
+                    
 
-
+                    <article class="span10 pull-right gale">
+                        <section id="least">                    
+                            
+                        
+            
+                            <!-- Least Gallery: Fullscreen Preview -->
+                            <div class="least-preview"></div>
+                            <div class="cnt3">
+                                <ul class="least-gallery">
                                 {% for plano in planos %}
-                                    <div onclick="galery(this)">
-                                        <img src="{{ asset(plano.urlplano) }}"/>
-                                        <span>{{ asset(plano.nombre) }}</span>
-                                    </div>
+                                    <li>
+                                        <a href="{{ asset(plano.urlplano) }}" title="Click Aqui" data-subtitle="Para ver la imagen" >
+                                            <img src="{{ asset(plano.urlplano) }}" alt="Alt Image Text" style="width:200px" />
+                                        </a>
+                                    </li>
+                                    
                                 {% endfor %}
+                                </ul>
+                            </div>                            
 
-
+                            <div class="cnt4">
+                            <!-- Least Gallery: Thumbnails -->
+                            <ul class="least-gallery">
+                            {% for gal in galeria %}
+                                <!-- 1 || Element with data-caption ||-->
+                                <li>
+                                    <a href="{{ asset(gal.imagen) }}" title="Click Aqui" data-subtitle="Para ver la imagen" >
+                                        <img src="{{ asset(gal.imagen) }}" alt="Alt Image Text" style="width:200px" />
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
                             </div>
                         </section>
-                    </article>
-
-                    <article class="span10 pull-right cnt4">
-                        <section>
-                            <div id="container2">
-                                {% for gal in galeria %}
-                                    <div onclick="galery(this)">
-                                        <img src="{{ asset(gal.imagen) }}"/>
-                                        <span></span>
-                                    </div>
-                                {% endfor %}
-
-                            </div>
-                        </section>
+                       
                     </article>
                 </div>
             </div>
@@ -365,3 +380,4 @@
     </div>
 
 {% endblock %}
+

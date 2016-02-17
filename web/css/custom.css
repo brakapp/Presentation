@@ -5,7 +5,7 @@
 
 .camera_wrap div
 {
-    height: 350px;
+    
 }
 
 .headtop
@@ -77,4 +77,19 @@ h4, .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs li a,.nav-collapse
 {
     border-top: thin solid #4572d1;
     background: #4572d1;
+}
+
+.list3 li a:hover
+{
+    color: #5A5A5A !important;
+}
+
+.list-soc
+{
+    padding-bottom: 10px !important;
+}
+
+.least-preview, .least-gallery
+{
+    margin-top: 20px;
 }

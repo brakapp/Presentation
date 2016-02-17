@@ -47,28 +47,23 @@
                     <h1 class="brand"><a href="index.html"><img alt="Architecture ST" src="{{ asset('img/logo.png') }}" width="150px"></a></h1>
                     <div class="nav-collapse nav-collapse_  collapse">
                         <ul class="nav sf-menu">
-                            <li class="active"><a href="{{ path('home_page') }}">Inicio</a></li>
+                            <li ><a href="{{ path('home_page') }}">Inicio</a></li>
                             <li><a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Quienes Somos</a>
                                 <ul>
-                                    <li><a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Misión</a></li>
-                                    <li><a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Visón</a></li>
-                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Objetivos</a></li>
-                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Otros</a></li>
+                                    <li><a href="{{ path('home_page',{'page':'mision'}) }}">Misión</a></li>
+                                    <li><a href="{{ path('home_page',{'page':'vision'}) }}">Visón</a></li>
+                                    <!--<li><a href="{{ path('home_page',{'page':'construccion'}) }}">Objetivos</a></li>-->
+                                    <!-- <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Politicas</a></li>-->
                                 </ul>
                             </li>
                             <li><a href="{{ path('home_page',{'page':'proyectos'}) }}">Proyectos</a>
                                 <ul>
                                     <li><a href="{{ path('home_page',{'page':'proyectos'}) }}">Vivienda</a></li>
                                     <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Construidos</a></li>
-                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Revista Virtual</a></li>
+                                    
                                 </ul>
                             </li>
-                            <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Sala de prensa</a>
-                                <ul>
-                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Comunicado</a></li>
-                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Eventos</a></li>
-                                    <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Noticias</a></li>
-                                </ul>
+                            <li><a href="{{ path('home_page',{'page':'construccion'}) }}">Eventos</a>
                             </li>
                             <li>
                                 <a href="{{ path('home_page',{'page':'construccion'}) }}">Cliente</a>
@@ -101,14 +96,14 @@
         <div class="container">
             <div class="row">
                 <article class="span3 maxheight">
-                    <h4>Contactanos</h4>
+                    <h4>Contactenos</h4>
                     <address class="address">
                         <p>
                             <span>Telefono 1:</span> +57 (5) 5704263<br>
                             <span>Telefono 2:</span> +57 (5) 5707863<br>
                             <span>Telefono 3:</span> +57 (5) 5707863
                         </p>
-                        <div class="mail">E-mail: <a href="mailto:#">el email</a></div>
+                        <div class="mail">E-mail: <a href="mailto:#">mail@demolink.org</a></div>
                     </address>
                 </article>
                 <article class="span3 maxheight">
@@ -126,48 +121,37 @@
 
                         <ul class="list3">
                             <li>
-                                <a href="index.html">Inicio</a>
+                                <a href="{{ path('home_page') }}">Inicio</a>
                             </li>
 
                             <li>
-                                <a href="index-1.html">Quienes Somos</a>
+                                <a href="{{ path('home_page',{'page':'nuestraempresa'}) }}">Quienes Somos</a>
                             </li>
                             <li>
-                                <a href="index-1.html">Proyectos</a>
+                                <a href="{{ path('home_page',{'page':'proyectos'}) }}">Proyectos</a>
                             </li>
 
                             <li>
-                                <a href="index-2.html">Sala de prensa</a>
+                                <a href="{{ path('home_page',{'page':'construccion'}) }}">Sala de prensa</a>
                             </li>
                             <li>
-                                <a href="index-3.html">Cliente</a>
+                                <a href="{{ path('home_page',{'page':'construccion'}) }}">Cliente</a>
                             </li>
                             <li>
-                                <a href="index-4.html">Desarrollo social</a>
+                                <a href="{{ path('home_page',{'page':'construccion'}) }}">Desarrollo social</a>
                             </li>
                         </ul>
                     </div>
                     <div class="men-cont2">
                         <ul class="list3">
                             <li>
-                                <a href="index.html">Proveedores</a>
-                            </li>
-
-                            <li>
-                                <a href="index-1.html">Estados Financieros</a>
+                                <a href="{{ path('home_proveedor') }}">Ser proveedor</a>
                             </li>
                             <li>
-                                <a href="index-1.html">Proyectos</a>
-                            </li>
-
-                            <li>
-                                <a href="index-2.html">Trabaje con nosotros</a>
+                                <a href="{{ path('home_page',{'page':'trabajeconnosotros'}) }}">Trabaje con nosotros</a>
                             </li>
                             <li>
-                                <a href="index-3.html">Cliente</a>
-                            </li>
-                            <li>
-                                <a href="index-4.html">Contacto</a>
+                                <a href="{{ path('home_contactar') }}">Contacto</a>
                             </li>
                         </ul>
                     </div>

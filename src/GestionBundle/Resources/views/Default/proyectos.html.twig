@@ -5,6 +5,10 @@
 {% endblock %}
 {% block stylesheets %}
     <style>
+    .span2
+    {
+        margin-bottom: 50px;
+    }
         .menup
         {
             margin-top:30px;
@@ -30,7 +34,7 @@
         .imgl a{
             display: block;
             height: 100px;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
         }
 
         .viv
@@ -58,17 +62,22 @@
                             <div class="span8"><h1 class="viv">Vivienda</h1></div>
                         </div>
                         <div class="row">
-
-                            {% for proyecto in proyectData %}
-                                <div class="span2">
+                            <div class="span2"></div>
+                            <div class="span8">
+                            <div class="row">
+                                {% for proyecto in proyectData %}
+                                <div class="span2 ">
                                     <div class="imgl">
                                         <a href="{{ path('home_proyectos',{'item': proyecto.id}) }}"><img src="{{ asset(proyecto.icono) }}" alt=""></a>
 
                                         <p>{{ proyecto.nombre }}</p>
                                     </div>
-
                                 </div>
-                            {% endfor %}
+
+                            {% endfor %}    
+                            </div>
+                            </div>
+                            
 
                         </div>
 
@@ -79,3 +88,4 @@
     </div>
 
 {% endblock %}
+
