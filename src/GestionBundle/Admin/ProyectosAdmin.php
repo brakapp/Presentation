@@ -45,6 +45,7 @@ class ProyectosAdmin extends Admin
             ->add('longitud')
             ->add('direccion')
             ->add('icono')
+            ->add('video')
             ->add('file','file', array(
                 'required'=>'false',
                 'label' => 'Icono del Proyecto'

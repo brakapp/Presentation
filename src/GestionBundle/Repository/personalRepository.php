@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class personalRepository extends EntityRepository
 {
+	public function getPersonal($id_dpto)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT per.email FROM GestionBundle:Personal per"
+                ." WHERE per.dpto = :id_dpto"
+            )->setParameter("id_dpto", $id_dpto)
+            ->getResult()
+            ;
+    }
 }

@@ -66,6 +66,13 @@ class Proyectos
     private $icono;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="video", type="text")
+     */
+    private $video;
+
+    /**
      * @Assert\File(maxSize="6000000")
      */
     private $file;
@@ -76,9 +83,19 @@ class Proyectos
     protected $proyectoimg;
 
     /**
+     * @ORM\OneToMany(targetEntity="Proyectogeo", mappedBy="proyecto")
+     */
+    protected $proyectogeo;
+
+    /**
      * @ORM\OneToMany(targetEntity="Planos", mappedBy="proyecto")
      */
     protected $planos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Slider", mappedBy="proyecto")
+     */
+    protected $slider;
 
 
     /**
@@ -259,7 +276,7 @@ class Proyectos
         // sanitize it at least to avoid any security issues
 
         //capturo al extencion original del archivo
-        $ext = $this->file->guessClientExtension();
+        $ext = $this->file->getClientOriginalExtension();
         $new_name = $this->getUploadDir().'/'. mt_rand(0,9999999).".".$ext;
 
 
@@ -372,5 +389,94 @@ class Proyectos
     public function getPlanos()
     {
         return $this->planos;
+    }
+
+    /**
+     * Set video
+     *
+     * @param string $video
+     * @return Proyectos
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return string 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Add proyectogeo
+     *
+     * @param \GestionBundle\Entity\Proyectogeo $proyectogeo
+     * @return Proyectos
+     */
+    public function addProyectogeo(\GestionBundle\Entity\Proyectogeo $proyectogeo)
+    {
+        $this->proyectogeo[] = $proyectogeo;
+
+        return $this;
+    }
+
+    /**
+     * Remove proyectogeo
+     *
+     * @param \GestionBundle\Entity\Proyectogeo $proyectogeo
+     */
+    public function removeProyectogeo(\GestionBundle\Entity\Proyectogeo $proyectogeo)
+    {
+        $this->proyectogeo->removeElement($proyectogeo);
+    }
+
+    /**
+     * Get proyectogeo
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProyectogeo()
+    {
+        return $this->proyectogeo;
+    }
+
+    /**
+     * Add slider
+     *
+     * @param \GestionBundle\Entity\Slider $slider
+     * @return Proyectos
+     */
+    public function addSlider(\GestionBundle\Entity\Slider $slider)
+    {
+        $this->slider[] = $slider;
+
+        return $this;
+    }
+
+    /**
+     * Remove slider
+     *
+     * @param \GestionBundle\Entity\Slider $slider
+     */
+    public function removeSlider(\GestionBundle\Entity\Slider $slider)
+    {
+        $this->slider->removeElement($slider);
+    }
+
+    /**
+     * Get slider
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSlider()
+    {
+        return $this->slider;
     }
 }

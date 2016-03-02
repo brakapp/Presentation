@@ -1,13 +1,19 @@
 {% extends 'base2.html.twig' %}
 {# receive vars from controller and set vars pages #}
-{% set nombre, direccion, latitud, longitud, descripcion, icono =  "","","","","","" %}
+{% set nombre, direccion, latitud, longitud, descripcion, icono, video =  "","","","","","","" %}
     {% for pjd in proyectData %}
 
-        {% set nombre, direccion, latitud, longitud, descripcion, icono =  pjd.nombre, pjd.direccion, pjd.latitud, pjd.longitud, pjd.descripcion, pjd.icono %}
+        {% set nombre, direccion, latitud, longitud, descripcion, icono, video =  pjd.nombre, pjd.direccion, pjd.latitud, pjd.longitud, pjd.descripcion, pjd.icono, pjd.video %}
 
     {% endfor %}
 {% block title %}Proyecto{% endblock %}
 {% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('css/custom/animate.css') }}"/>
+    <link href="{{ asset('css/custom/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom/magnific-popup.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     
     <style>
         .camera_wrap
@@ -111,10 +117,7 @@
             25% { left: -100%; }
             45% { left: -100%; }
             50% { left: -200%; }
-            70% { left: -200%; }
-            75% { left: -300%; }
-            95% { left: -300%; }
-            100% { left: -400%; }
+            100% { left:-200%; }
         }
         body, figure {
             margin: 0; background: #101010;
@@ -156,7 +159,12 @@
             height: 350px !important;
         }
 
-        .cnt2, .cnt3, .cnt4
+        .cnt2, .cnt3, .cnt4, .vide
+        {
+            display: none;
+        }
+
+        .logotipe
         {
             display: none;
         }
@@ -164,6 +172,28 @@
         .none
         {
             display: none;
+        }
+
+        div#captioned-gallery {
+           width: 90% !important;
+           overflow: hidden;
+           margin-left: 7% !important;
+        }
+
+        #portfoliolist-three .portfolio, #portfoliolist-threes .portfolios
+        {
+            height: 200px !important;
+        }
+
+        .vide
+        {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        iframe
+        {
+            border-radius: 10px;
         }
 
     </style>
@@ -185,6 +215,7 @@
             var btnUbicacion = $("#geo");
             var btnPnl = $("#pnl");
             var btnGal = $("#gal");
+            var btnVid = $("#vid");
 
 
             btnInfo.click(function(e){
@@ -193,6 +224,8 @@
                 $(".cnt3").hide();
                 $(".cnt4").hide();
                 $(".gale").hide();
+                $(".vide").hide();
+                $(".logotipe").hide();
                 $(".cnt1").slideDown();
             });
 
@@ -204,6 +237,8 @@
                 $(".cnt3").hide();
                 $(".cnt4").hide();
                 $(".gale").hide();
+                $(".vide").hide();
+                $(".logotipe").show();
                 $(".cnt2").slideDown();
 
             });
@@ -212,6 +247,8 @@
                 $(".cnt1").hide();
                 $(".cnt2").hide();
                 $(".cnt4").hide();
+                $(".vide").hide();
+                $(".logotipe").show();
                 $(".gale").slideDown();
                 $(".cnt3").slideDown();
 
@@ -221,8 +258,22 @@
                 $(".cnt1").hide();
                 $(".cnt2").hide();
                 $(".cnt3").hide();
+                $(".vide").hide();
+                $(".logotipe").show();
                 $(".gale").slideDown();
                 $(".cnt4").slideDown();
+
+            });
+
+            btnVid.click(function(e){
+                e.preventDefault();
+                $(".cnt1").hide();
+                $(".cnt2").hide();
+                $(".cnt3").hide();
+                $(".gale").hide();
+                $(".cnt4").hide();
+                $(".logotipe").show();
+                $(".vide").slideDown();
 
             });
 
@@ -288,25 +339,25 @@
                     <article class="span2  term">
 
                         <h2 class="title2">{{ nombre }}</h2>
-                        <img src="{{ asset(icono) }}" width="150px" alt="">
+                        <img src="{{ asset(icono) }}" width="150px" alt="" class="logotipe">
                         <ul class="menu-lat">
                             <li ><a href="#" class="top" id="info">Información</a></li>
                             <li><a href="#" id="geo">Ubicación</a></li>
                             <li><a href="#" id="pnl">Planos</a></li>
                             <li><a href="#" id="gal">Galeria de Fotos</a></li>
+                            <li><a href="#" id="vid">Video</a></li>
                             <li><a href="{{ path('home_contactar') }}" class="bot">Contacto</a></li>
                         </ul>
 
 
                     </article>
-                    <article class="span10 pull-right cnt1">
-                        <h2 class="title2"></h2>
+                    <article class="span10 pull-right cnt1" >
+                        <h2></h2>
                         <div id="captioned-gallery">
                             <figure class="slider">
                                 {% for img in imagenes %}
                                     <figure>
                                         <img src="{{ asset(img.imagen) }}" alt>
-
                                     </figure>
 
                                 {% endfor %}
@@ -319,7 +370,7 @@
                             {{ descripcion | raw }}
                         </div>
                     </article>
-                    <article class="span10 pull-right cnt2">
+                    <article class="span10 pull-right cnt2" style="text-align:center;">
                         <h2 class="title2"></h2>
                         <div id="tests">
                             {% for geo in geos %}
@@ -337,41 +388,72 @@
                     </article>
                     
 
-                    <article class="span10 pull-right gale">
+                    <article class="span10 pull-right gale" >
                         <section id="least">                    
                             
                         
             
                             <!-- Least Gallery: Fullscreen Preview -->
                             <div class="least-preview"></div>
-                            <div class="cnt3">
-                                <ul class="least-gallery">
-                                {% for plano in planos %}
-                                    <li>
-                                        <a href="{{ asset(plano.urlplano) }}" title="Click Aqui" data-subtitle="Para ver la imagen" >
-                                            <img src="{{ asset(plano.urlplano) }}" alt="Alt Image Text" style="width:200px" />
-                                        </a>
-                                    </li>
-                                    
-                                {% endfor %}
-                                </ul>
+                            <div class="cnt3" style="padding-top:40px !important;">
+                            <div id="portfoliolist-threes">
+                                <div class="col-md-12">
+
+                            {% for plano in planos %}
+                                <!-- 1 || Element with data-caption ||-->
+                                <div class="portfolios app" data-cat="app">
+                                    <div class="portfolios-wrapper">
+                                        <div class="portfolios-hover">
+                                            <div class="image-caption">
+                                                <a href="{{ asset(plano.urlplano) }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                                                
+
+                                            </div>
+                                            <img src="{{ asset(plano.urlplano) }}" alt="" />
+                                            <h1></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            {% endfor %}
+                            </div>
+                        </div>
+                                
                             </div>                            
 
-                            <div class="cnt4">
+                            <div class="cnt4" style="padding-top:40px !important;">
+
                             <!-- Least Gallery: Thumbnails -->
-                            <ul class="least-gallery">
+                            <div id="portfoliolist-three">
+                                <div class="col-md-12">
+
                             {% for gal in galeria %}
                                 <!-- 1 || Element with data-caption ||-->
-                                <li>
-                                    <a href="{{ asset(gal.imagen) }}" title="Click Aqui" data-subtitle="Para ver la imagen" >
-                                        <img src="{{ asset(gal.imagen) }}" alt="Alt Image Text" style="width:200px" />
-                                    </a>
-                                </li>
+                                <div class="portfolio app" data-cat="app">
+                                    <div class="portfolio-wrapper">
+                                        <div class="portfolio-hover">
+                                            <div class="image-caption">
+                                                <a href="{{ asset(gal.imagen) }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                
+
+                                            </div>
+                                            {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                            <img src="{{ asset(gal.imagen) }}" alt="" />
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             {% endfor %}
-                            </ul>
+                            </div>
+                                </div>
                             </div>
                         </section>
                        
+                    </article>
+
+                    <article class="span10 pull-right vide" >
+                        {{video | raw}}
                     </article>
                 </div>
             </div>
@@ -379,5 +461,79 @@
 
     </div>
 
+    <script src="{{ asset('js/custom/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/custom/mixitup.js') }}"></script>
+    <script src="{{ asset('js/custom/jquery.magnific-popup.js') }}"></script>
+    <script type="text/javascript">
+    $('.image-caption a').tooltip();
+
+    $(function () {
+
+        var filterList = {
+
+            init: function () {
+
+                // MixItUp plugin
+                // http://mixitup.io
+                $('#portfoliolist-three').mixitup({
+                    targetSelector: '.portfolio',
+                    filterSelector: '.filter',
+                    effects: ['fade'],
+                    easing: 'snap',
+                    // call the hover effect
+                    onMixEnd: filterList.hoverEffect()
+                });
+
+                $('#portfoliolist-threes').mixitup({
+                    targetSelector: '.portfolios',
+                    filterSelector: '.filter',
+                    effects: ['fade'],
+                    easing: 'snap',
+                    // call the hover effect
+                    onMixEnd: filterList.hoverEffect()
+                });
+
+            },
+
+            hoverEffect: function () {
+                $("[rel='tooltip']").tooltip();
+                // Simple parallax effect
+                $('#portfoliolist-three .portfolio .portfolio-hover').hover(
+                function(){
+                    $(this).find('.image-caption').slideDown(250); //.fadeIn(250)
+                },
+                function(){
+                    $(this).find('.image-caption').slideUp(250); //.fadeOut(205)
+                }
+            );
+
+                $('#portfoliolist-threes .portfolios .portfolios-hover').hover(
+                function(){
+                    $(this).find('.image-caption').slideDown(250); //.fadeIn(250)
+                },
+                function(){
+                    $(this).find('.image-caption').slideUp(250); //.fadeOut(205)
+                }
+            );
+            }
+
+        };
+
+        // Run the show!
+        filterList.init();
+
+
+    });
+
+    $( document ).ready(function() {
+       $('.magnefig').each(function(){
+            $(this).magnificPopup({
+                    type:'image',
+                    removalDelay: 300,
+                    mainClass: 'mfp-fade'
+               })
+        });
+    });
+    </script>
 {% endblock %}
 

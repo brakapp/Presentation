@@ -166,3 +166,15 @@ services:
             - ~
         calls:
             - [setTranslationDomain, [GestionBundle]]
+
+    sonata.admin.slider:
+        class: GestionBundle\Admin\SliderAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group: 'Archivos', label:'Slider del Proyecto' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Slider
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+

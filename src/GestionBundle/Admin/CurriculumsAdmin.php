@@ -47,6 +47,7 @@ class CurriculumsAdmin extends Admin
             ->add('nombre')
             ->add('email')
             ->add('ciudad')
+            ->add('cargo')
 
         ;
     }

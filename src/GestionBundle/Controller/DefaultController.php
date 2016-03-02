@@ -14,6 +14,7 @@ use GestionBundle\Form\ContactoType;
 use GestionBundle\Entity\Curriculums;
 use GestionBundle\Entity\Proveedores;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
@@ -35,6 +36,8 @@ class DefaultController extends Controller
             $em->persist($curriculum);
             $curriculum->upload();
             $em->flush();
+
+            
 
             $session->getFlashBag()->add('Mensaje','Hoja de Vida enviada');
 
@@ -84,14 +87,53 @@ class DefaultController extends Controller
         $form = $this->createForm(new ContactoType(), $contacto);
 
         $form->handleRequest($request);
+
+
         if ($form->isValid()) {
+            //recoleccion de datos de la entidad
+            $nombre = $contacto->getNombre();
+            $email = $contacto->getEmail();
+            $telefono = $contacto->getTelefono();
+            $mensaje = $contacto->getMensaje();
+            $dpto = $contacto->getDpto()->getId();
+
+            //recoleccion de los correos del departamento seleccionado
             $em = $this->getDoctrine()->getManager();
             $em->persist($contacto);
             $em->flush();
 
             $session->getFlashBag()->add('Mensaje','Mensaje enviado');
 
-            return $this->render('GestionBundle:Default:succescv.html.twig', array('mensaje'=>'Su mensaje ha sido recivido, muchas gracias por contactarnos'));
+            //recoleccion de las variables del formulario para el envio del correo electronico 
+            
+            //$nombre = $form["nombre"]->getData();
+            
+
+            $personalRepository = $em->getRepository('GestionBundle:Personal');
+            $personal = $personalRepository->getPersonal($dpto);
+            $dat = array();
+            foreach ($personal as $key => $value) {
+                $dat[] = $value['email'];
+            }
+
+            $dat[] = "mercadeo@orbesa.com.co";
+            $dat[] = "duviel7@gmail.com";
+            $dat[] = "duviel@ymail.com";
+
+            #envio del correo al encargado del departamento seleccionado
+            $messageObject = \Swift_Message::newInstance()
+            ->setSubject($dpto = $contacto->getDpto())
+            ->setFrom('admin@orbesa.com.co')
+            ->setTo("mercadeo@orbesa.com.co")
+            ->setBody("Nombre: ".$nombre."\n"
+                ."Email: ".$email."\n"
+                ."Telefono: ".$telefono."\n"
+                ."mensaje: \n".$mensaje
+                );
+            $this->get('mailer')->send($messageObject);
+            //return new JsonResponse($dat);
+            
+            return $this->render('GestionBundle:Default:succescv.html.twig', array('mensaje'=>'Su mensaje ha sido recivido, muchas gracias por contactarnos'.$nombre));
             // Formulario enviado
             //die;
         }
@@ -111,8 +153,10 @@ class DefaultController extends Controller
         $proyecto = $proyectoRepository->getProyecto($item);
 
         //carga de las imagenes del slider del proyecto
+        $sliderRepository = $em->getRepository('GestionBundle:Slider');
+        $slider = $sliderRepository->getSliderProyecto($item);
+
         $proyectoimgRepository = $em->getRepository('GestionBundle:Proyectoimg');
-        $proyectoimg = $proyectoimgRepository->getImagenesProyecto($item);
         $proyectogalery = $proyectoimgRepository->getAllImagenesProyecto($item);
 
         //carga de los planos del proyecto
@@ -125,7 +169,7 @@ class DefaultController extends Controller
 
         return $this->render('GestionBundle:Default:proyecto.html.twig', array(
             'proyectData'=> $proyecto,
-            'imagenes' => $proyectoimg,
+            'imagenes' => $slider,
             'planos' => $planos,
             'geos' => $geo,
             'galeria' => $proyectogalery
@@ -180,12 +224,38 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/dale")
+     */
+    public function daleAction()
+    {
+        /*$this->get('request')->request->get('name');
+        # envio del correo al encargado del departamento seleccionado
+            $messageObject = \Swift_Message::newInstance()
+            ->setSubject('Subject')
+            ->setFrom('admin@brakapp.com')
+            ->setTo(array('duviel7@gmail.com','danieleangarita@hotmail.com'))
+            ->setBody('DArius pentakill');
+            $this->get('mailer')->send($messageObject);
+
+            return new Response("Master");*/
+
+            $em = $this->getDoctrine()->getManager();
+            //carga de los proyectos
+            $personalRepository = $em->getRepository('GestionBundle:Proyectos');
+            $personal = $personalRepository->getPersonal($item);
+    }
+
+    /**
      * @Route("/success")
      */
     public function successAction()
     {
         return $this->render('GestionBundle:Default:succescv.html.twig');
     }
+
+
+
+
 
 
 
