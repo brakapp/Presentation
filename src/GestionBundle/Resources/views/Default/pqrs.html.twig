@@ -1,0 +1,127 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}PQRS{% endblock %}
+
+{% block extracontent %}
+
+{% endblock %}
+{% block body %}
+
+
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content" >
+        <div class="row-6">
+
+            <div class="container">
+                <div class="row">
+                    <article class="span4">
+                        <h2>PQRS</h2>
+                        <address class="address-1">
+
+                                Para Orbe S.A.S Construcciones los comentarios de nuestros clientes son muy importantes. Por favor escoge el formulario a diligenciar:
+                        </address>
+                    </article>
+                    <article class="span8">
+                        <h2>Envianos tu Mensaje</h2>
+
+                        <form action="{{ path('home_pqrs') }}" method="post" enctype="multipart/form-data">
+                        {{ form_start(form) }}
+                        <fieldset>
+                            <div class="coll-1">
+                                {{ form_errors(form.tipo)  }}
+                                {{ form_label(form.tipo, 'Tipo PQRS') }}
+                                {{ form_widget(form.tipo) }}
+                            </div>
+                            <div class="coll-2">
+                                {{ form_errors(form.tdocumento)  }}
+                                {{ form_label(form.tdocumento) }}
+                                {{ form_widget(form.tdocumento) }}
+                            </div>
+                            <div class="coll-3">
+                                {{ form_errors(form.documento)  }}
+                                {{ form_label(form.documento) }}
+                                {{ form_widget(form.documento) }}
+                            </div>
+                            <div class="clear"></div>
+
+                            <div class="coll-1">
+                                {{ form_errors(form.nombres)  }}
+                                {{ form_label(form.nombres) }}
+                                {{ form_widget(form.nombres) }}
+                            </div>
+                            <div class="coll-2">
+                                {{ form_errors(form.apellidos)  }}
+                                {{ form_label(form.apellidos) }}
+                                {{ form_widget(form.apellidos) }}
+                            </div>
+                            <div class="coll-3">
+                                {{ form_errors(form.celular)  }}
+                                {{ form_label(form.celular) }}
+                                {{ form_widget(form.celular) }}
+                            </div>
+                            <div class="clear"></div>
+
+                            <div class="coll-1">
+                                {{ form_errors(form.telefonof)  }}
+                                {{ form_label(form.telefonof) }}
+                                {{ form_widget(form.telefonof) }}
+                            </div>
+                            <div class="coll-2">
+                                {{ form_errors(form.email)  }}
+                                {{ form_label(form.email) }}
+                                {{ form_widget(form.email) }}
+                            </div>
+
+                            <div class="coll-3">
+                                {{ form_errors(form.proyecto)  }}
+                                {{ form_label(form.proyecto) }}
+                                {{ form_widget(form.proyecto) }}
+                            </div>
+                            <div class="clear"></div>
+                            
+                            <div class="clear"></div>
+                            <div>
+                                <div class="coll-5">
+                                    {{ form_errors(form.texto)  }}
+                                    {{ form_label(form.texto) }}
+                                    {{ form_widget(form.texto) }}
+                                </div>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="check"  > <span>He leído la política de protección de datos y acepto que me contacte para recibir información de los proyectos.</span>
+                                <br>
+                                <input type="submit" value="Enviar" class="button" id="send">
+
+                            </div>
+                        </fieldset>
+                        {{ form_end(form) }}
+                        </form>
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            var send = $("#send");
+            var doc = $("#check");
+
+            send.attr('disabled','disabled');
+
+            doc.click(function(){
+                send.removeAttr('disabled');
+
+            });
+
+
+        });
+    </script>
+{% endblock %}

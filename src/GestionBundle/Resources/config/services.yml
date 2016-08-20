@@ -7,6 +7,7 @@ services:
             - ~
             - GestionBundle\Entity\Cargos
             - ~
+        position: right
         calls:
             - [setTranslationDomain, [GestionBundle]]
 
@@ -28,6 +29,26 @@ services:
         arguments:
             - ~
             - GestionBundle\Entity\Contacto
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+    sonata.admin.pqrs:
+        class: GestionBundle\Admin\PqrsAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Pqrs' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Pqrs
+            - ~
+        calls:
+            - [setTranslationDomain, [GestionBundle]]
+    sonata.admin.postventa:
+        class: GestionBundle\Admin\PostventaAdmin
+        tags:
+            - { name: sonata.admin, manager_type:orm, group:'Contenido', label:'Postventa' }
+        arguments:
+            - ~
+            - GestionBundle\Entity\Postventa
             - ~
         calls:
             - [setTranslationDomain, [GestionBundle]]

@@ -23,6 +23,7 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
+        assets_base_urls: http://orbesa.com.co/web/
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
@@ -106,17 +107,45 @@ sonata_admin:
 
     dashboard:
         blocks:
-            -
-                position: left
-                type: sonata.admin.block.admin_list
-            -
-                position: right
-                type: sonata.block.service.text
-                settings:
-                    content: >
-                        <h2>Bienvenido al panel de Administracion de Brakapp S.A.S</h2>
-                        <p>Este es el panel de administracion para que manejes  los contenidos
-                        de tu sitio y lo mantengas actualizado</p>
+            - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Content.user] } }
+            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Content.admin] } }
+        groups:
+            Content.user:
+                label: ORBE
+                items: 
+                    - sonata.admin.contacto
+                    - gestion.admin.curriculum
+                    - sonata.admin.proveedores
+                    - sonata.admin.pqrs
+                    - sonata.admin.postventa
+                roles: [ROLE_ADMIN_CONTENT, ROLE_ADMIN ]
+            Content.admin:
+                label: Administrador 
+                items: 
+                    - sonata.admin.ciudad
+                    - sonata.admin.cargos
+                    - sonata.admin.dpto
+                    - sonata.admin.documentos
+                    - sonata.admin.personal
+                    - sonata.admin.departamento
+                    - sonata.admin.proyecto
+                    - sonata.admin.proyectoimg
+                    - sonata.admin.planos
+                    - sonata.admin.proyectogeo
+                    - sonata.admin.slider
+                roles: [ ROLE_ADMIN_CONTENT, ROLE_SUPER_ADMIN ]
+        #blocks:
+        #    -
+        #        position: left
+        #        type: sonata.admin.block.admin_list
+        #    -
+        #        position: right
+        #        type: sonata.block.service.text
+        #        settings:
+        #            content: >
+        #                <h2>Bienvenido al panel de Administracion de Brakapp S.A.S</h2>
+        #                <p>Este es el panel de administracion para que manejes  los contenidos
+        #                de tu sitio y lo mantengas actualizado</p>
 
 stof_doctrine_extensions:
     orm:

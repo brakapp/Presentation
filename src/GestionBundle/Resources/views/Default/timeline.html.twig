@@ -1,0 +1,156 @@
+{% extends 'base2.html.twig' %}
+{% block title %}Nuestra Empresa{% endblock %}
+{% block extracontent %}
+
+{% endblock %}
+{% block body %}
+
+    <link rel="stylesheet" href="{{ asset('css/cs/style.css') }}">
+
+    <style>
+        #timeline
+        {
+            height: 750px;
+            margin-top:0 !important;
+        }
+        #issues
+        {
+            height: 700px;
+        }
+
+        h1
+        {
+            font-size: 2em !important;
+        }
+    </style>
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content">
+        <div class="row-7">
+            <div class="container">
+                <div class="row policy">
+                    <article class="span12">
+                        <h2 class="title2"></h2>
+<div id="timeline">
+        <ul id="dates">
+            <li><a href="#1993">1993</a></li>
+            <li><a href="#1994">1994</a></li>
+            <li><a href="#19942">1994-2</a></li>
+            <li><a href="#1996">1996</a></li>  
+            <li><a href="#1997">1997</a></li>
+            <li><a href="#2001">2001</a></li>
+            <li><a href="#2002">2002</a></li>  
+            <li><a href="#2003">2003</a></li>           
+            <li><a href="#2005">2005</a></li>  
+            <li><a href="#2007">2007</a></li>  
+            <li><a href="#2008">2008</a></li> 
+            <li><a href="#2009">2009</a></li> 
+            <li><a href="#2010">2010</a></li> 
+            <li><a href="#2011">2011</a></li> 
+            <li><a href="#20111">2011-2</a></li> 
+            <li><a href="#2012">2012</a></li> 
+            <li><a href="#2014">2014</a></li>  
+        </ul>
+        <ul id="issues">
+            <li id="1993">
+                <h1>Urbanización el Cerrito</h1>
+                <img src="{{ asset('time/cerrito.jpg') }}" width="700px" height="700px" />
+                
+            </li>
+            <li id="1994">
+                <h1>Urbanización las Flores</h1>
+                <img src="{{ asset('time/flores.jpg') }}" width="700px" height="700px" />
+                
+                
+            </li>
+            <li id="19942">
+                <h1>Unidad Residencial Los Cortijos</h1>
+                <img src="{{ asset('time/Cortijos.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="1996">
+                <h1>Centro Comercial Torcoroma</h1>
+                <img src="{{ asset('time/torcoroma.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="1997">
+                <h1>Centro Ejecutivo Ágora</h1>
+                <img src="{{ asset('time/agor.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2001">
+                <h1>Rosario Norte I</h1>
+                <img src="{{ asset('time/RosarioNorteII.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2002">
+                <h1>Rosario Norte II</h1>
+                <img src="{{ asset('time/RosarioNorteII.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2003">
+                <h1>Portal del Rosario</h1>
+                <img src="{{ asset('time/PortaldelRosario.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2005">
+                <h1>Quintas del Rosario</h1>
+                <img src="{{ asset('time/QuintasdelRosario.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2007">
+                <h1>Centro de Negocios Orbe Plaza</h1>
+                <img src="{{ asset('time/OrbePlaza.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2008">
+                <h1>Boulevard del Rosario</h1>
+                <img src="{{ asset('time/BulevardelRosario.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2009">
+                <h1>Mirador de la Sierra I</h1>
+                <img src="{{ asset('time/MiradordelaSierraI.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2010">
+                <h1>Mirador de la Sierra II</h1>
+                <img src="{{ asset('time/MiradordelaSierraII.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2011">
+                <h1>Unidad Residencial Buenavista</h1>
+                <img src="{{ asset('time/BuenaVista.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="20111">
+                <h1>Acuarela</h1>
+                <img src="{{ asset('time/Acuarela.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2012">
+                <h1>Mirador de la Sierra III</h1>
+                <img src="{{ asset('time/MiradordelaSierraIII.jpg') }}" width="700px" height="700px" />
+            </li>
+            <li id="2014">
+                <h1>Mirador de la Sierra IV</h1>
+                <img src="{{ asset('time/MiradordelaSierraIV.jpg') }}" width="700px" height="700px" />
+            </li>
+
+            
+
+            
+            <!-- esto es un comentario dejado aqui a proposito-->
+        </ul>
+        <div id="grad_left"></div>
+        <div id="grad_right"></div>
+        <a href="#" id="next">+</a>
+        <a href="#" id="prev">-</a>
+    </div>
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/jquery.timelinr-0.9.6.js') }}"></script>
+    <script>
+        $(function(){
+            $().timelinr({
+                arrowKeys: 'true'
+            })
+        });
+    </script>
+
+{% endblock %}

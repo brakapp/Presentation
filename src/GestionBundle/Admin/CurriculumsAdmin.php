@@ -60,6 +60,7 @@ class CurriculumsAdmin extends Admin
             ->add('email')
             ->add('departamento')
             ->add('ciudad')
+            ->add('cargo')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array( ),

@@ -29,6 +29,7 @@ class ProyectosRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery(
                 "SELECT pj FROM GestionBundle:Proyectos pj"
+                ." WHERE pj.estado = 1"
             )
             ->getResult();
     }

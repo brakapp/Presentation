@@ -157,7 +157,7 @@ class Planos
         // sanitize it at least to avoid any security issues
 
         //capturo al extencion original del archivo
-        $ext = $this->file->guessClientExtension();
+        $ext = $this->file->getClientOriginalExtension();
         $new_name = $this->getUploadDir().'/'. mt_rand(0,9999999999).".".$ext;
 
 
@@ -169,5 +169,28 @@ class Planos
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Planos
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 }

@@ -9,28 +9,58 @@
 
 
     <!--============================== content =================================-->
+    <style>
+        .lblcheck, .check
+        {
+            display: block;
+            float: left;
+        }
 
+        .check
+        {
+            padding-top: -2px;
+        }
+        .lblcheck
+        {            
+            padding-top: 3px;
+            margin-left: 5px;
+        }
+
+        .lblcheck > label
+        {
+            display: inline;
+        }
+
+    </style>
     <div id="content" class="extra-content" >
         <div class="row-6">
-
-
-
-
-
-
 
             <div class="container">
                 <div class="row">
                     <article class="span4">
                         <h2>Datos de Contacto</h2>
                         <address class="address-1">
-                            <em>Direccion:</em>
+                            <em>Dirección:</em>
                             <p>Calle 12 No. 8-42 Oficina 221
                                 Valledupar - Cesar.
                                 .</p>
-                            <em>Telefono: </em>
+                            <em>Teléfono: </em>
                             <p class="border2"> <span>+57 (5) 5704263</span>
                         </address>
+                        <p>
+                            Te Esperamos en nuestras salas Información y Ventas <br>
+                            <br>
+                            Centro de negocios Orbe Plaza, local 143<br><br>
+                            <img src="{{ asset('img/whats.png')}}"> 5712062 - 5704263 - 5707833 <br>
+                            <img src="{{ asset('img/call.png')}}"> 3147801051 - 3145561579
+                            <br><br>
+                            Centro Comercial Mayales Plaza<br>
+                            Semisótano local 140 y 141
+                            Tel. 5731904
+
+
+
+                        </p>
                     </article>
                     <article class="span8">
                         <h2>Envianos tu Mensaje</h2>
@@ -64,14 +94,43 @@
                             </div>
                             <div class="clear"></div>
                             <div>
+                                <div class="coll-5">
+                                    {{ form_errors(form.proyecto)  }}
+                                    {{ form_label(form.proyecto) }}
+                                    {{ form_widget(form.proyecto) }}
+                                </div>
+
+                            </div>
+                            <div class="clear"></div>
+                            <div>
                                 <div>
                                     {{ form_errors(form.mensaje)  }}
                                     {{ form_label(form.mensaje) }}
                                     {{ form_widget(form.mensaje) }}
                                 </div>
-
-
                             </div>
+                            <div class="clear"></div>
+                            <div class="coll-5">
+                                {{ form_errors(form.accepcel)  }}
+                                <span class="check">{{ form_widget(form.accepcel) }}</span>
+                                <span class="lblcheck">{{ form_label(form.accepcel) }} </span>
+                                
+                            </div>
+                            <div class="clear"></div>
+                            <div class="coll-5">
+                                {{ form_errors(form.accepmail)  }}
+                                <span class="check">{{ form_widget(form.accepmail) }}</span>
+                                <span class="lblcheck">{{ form_label(form.accepmail) }} </span>
+                                
+                            </div>
+                            <div class="clear"></div>
+                            <div class="coll-5">
+                                {{ form_errors(form.acceppolitica)  }}
+                                <span class="check">{{ form_widget(form.acceppolitica) }}</span>
+                                <span class="lblcheck">{{ form_label(form.acceppolitica) }} <a href="{{ asset('politica/politica.pdf')}}">Ver aqui</a></span>
+                                
+                            </div>
+
 
                             <div class="clear"></div>
                             <div>

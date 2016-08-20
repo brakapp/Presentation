@@ -1,0 +1,357 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}POSTVENTA{% endblock %}
+
+
+{% block extracontent %}
+
+{% endblock %}
+{% block body %}
+
+<style>
+    .mmax
+    {
+        width: 100% !important;
+    }
+    .part2, .part3
+    {
+        display: none;
+    }
+
+    #btnPro
+    {
+        margin-bottom: 10px;
+    }
+
+    .unidad, .torre, .apto
+    {
+        display: none;
+    }
+    
+</style>
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content" >
+        <div class="row-6">
+
+            <div class="container">
+                <div class="row">
+                    <article class="span4">
+                        <h2>Postventa</h2>
+                        <address class="address-1">
+
+                                Comentanos tus sugerencias sobre las mejoras para tu vivienda y asi poder brindarte una mejor calidad de vida para ti y tu familia.<br>
+                                <br>
+
+                                
+
+
+</a>
+                        </address>
+                    </article>
+                    <article class="span8">
+                        <h2>Formulario de Solicitud de Arreglo</h2>
+                        <br>
+
+                        <form action="{{ path('home_postventa') }}" method="post" enctype="multipart/form-data">
+                        {{ form_start(form) }}
+                        <div class="part1">
+                            <div class="coll-5">
+                                {{ form_errors(form.proyecto)  }}
+                                {{ form_label(form.proyecto) }}
+                                {{ form_widget(form.proyecto) }}
+                            </div>
+                        <br>
+                            <a href="" class="button" id="btnPro"> Siguiente</a>
+                            <a href="" class="button" id="video"> Ver Video de Ayuda</a>
+                            <a href="" class="button" id="video2" style="display:none;"> Cerrar Video</a>
+                            <br>
+
+                            <div class="video" style="text-align:center; margin-top:40px; display:none;">
+                                <video width="400" controls>
+                                  <source src="{{ asset('media/postventa.mp4') }}" type="video/mp4">
+                                  
+                                  Tu navegador no soporta videos html5
+                                </video>
+                            </div>
+
+                            <div class="clear"></div>
+                        </div>
+                            <div class="part2">
+                                
+                            
+                            <div class="coll-1">
+                                {{ form_errors(form.tipoInmueble)  }}
+                                {{ form_label(form.tipoInmueble) }}
+                                {{ form_widget(form.tipoInmueble) }}
+                            </div>
+
+                            <div class="coll-2 unidad">
+                                {{ form_errors(form.unidad)  }}
+                                {{ form_label(form.unidad) }}
+                                {{ form_widget(form.unidad) }}
+                            </div>
+                           
+
+                            <div class="coll-2 torre">
+                                {{ form_errors(form.torreBloque)  }}
+                                {{ form_label(form.torreBloque) }}
+                                {{ form_widget(form.torreBloque) }}
+                            </div>
+
+                            <div class="coll-3 apto">
+                                {{ form_errors(form.apartamento)  }}
+                                {{ form_label(form.apartamento, 'Apartamento') }}
+                                {{ form_widget(form.apartamento) }}
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="coll-1">
+                                {{ form_errors(form.fechaentrega)  }}
+                                {{ form_label(form.fechaentrega, 'Fecha de Entrega') }}
+                                {{ form_widget(form.fechaentrega) }}
+                            </div>
+
+                            <div class="coll-2">
+                                {{ form_errors(form.tipodocumento)  }}
+                                {{ form_label(form.tipodocumento, 'Tipo de Documento') }}
+                                {{ form_widget(form.tipodocumento) }}
+                            </div>
+
+                            <div class="coll-3">
+                                {{ form_errors(form.numerodocumento)  }}
+                                {{ form_label(form.numerodocumento, 'Número de Documento') }}
+                                {{ form_widget(form.numerodocumento) }}
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="coll-5">
+                                {{ form_errors(form.nombrepropietario)  }}
+                                {{ form_label(form.nombrepropietario, 'Nombre del Propietario') }}
+                                {{ form_widget(form.nombrepropietario) }}
+                            </div>
+                            <br>
+                            <a href="" class="button" id="btnPropR"> Regresar</a>
+                            <a href="" class="button" id="btnProp"> Siguiente</a>
+
+                            </div>
+                            <div class="clear"></div>
+
+                            <div class="part3">
+                            <h2>Datos del Solicitante</h2>
+                            <div class="coll-5">
+                                {{ form_errors(form.nombreapellidosol)  }}
+                                {{ form_label(form.nombreapellidosol, 'Nombre Completo') }}
+                                {{ form_widget(form.nombreapellidosol) }}
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="coll-1">
+                                {{ form_errors(form.tipodocumentosol)  }}
+                                {{ form_label(form.tipodocumentosol, 'Tipo de Documento') }}
+                                {{ form_widget(form.tipodocumentosol) }}
+                            </div>
+
+                            <div class="coll-2">
+                                {{ form_errors(form.numerodocumentosol)  }}
+                                {{ form_label(form.numerodocumentosol, 'Número de Documento') }}
+                                {{ form_widget(form.numerodocumentosol) }}
+                            </div>
+
+                            <div class="coll-3">
+                                {{ form_errors(form.celular)  }}
+                                {{ form_label(form.celular, 'Celular') }}
+                                {{ form_widget(form.celular) }}
+                            </div>
+                            <div class="clear"></div>
+
+                            <div class="coll-1">
+                                {{ form_errors(form.fijo)  }}
+                                {{ form_label(form.fijo, 'Fijo') }}
+                                {{ form_widget(form.fijo) }}
+                            </div>
+
+                            <div class="coll-2">
+                                {{ form_errors(form.email)  }}
+                                {{ form_label(form.email, 'Email') }}
+                                {{ form_widget(form.email) }}
+                            </div>
+
+                            <div class="coll-3">
+                                {{ form_errors(form.tipocliente)  }}
+                                {{ form_label(form.tipocliente, 'Tipo de Cliente') }}
+                                {{ form_widget(form.tipocliente) }}
+                            </div>
+
+                            <div class="clear"></div>
+                            <div>
+                                <div class="coll-5">
+                                    {{ form_errors(form.solicitudarreglo)  }}
+                                    {{ form_label(form.solicitudarreglo, 'Solicitud de Arreglo') }}
+                                    {{ form_widget(form.solicitudarreglo) }}
+                                </div>    
+                            </div>
+                            <br>
+                            
+                            <input type="button" class="button" value="Regresar" id="btnDtR">
+                            <input type="submit" value="Enviar" class="button" id="sender" >
+                            </div>
+
+
+
+                            
+                        {{ form_end(form) }}
+                        </form>
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            var send = $("#send");
+            var doc = $("#check");
+
+            var torre = $("#postventa_torreBloque");
+            var apto = $("#postventa_apartamento");
+            var unidad = $("#postventa_unidad");
+
+            var valorp = '';
+
+            send.attr('disabled','disabled');
+
+            doc.click(function(){
+                send.removeAttr('disabled');
+
+            });
+
+
+            $("#postventa_tipoInmueble").on('change', function(){
+                var valor = this.value;
+                valorp = valor;
+                if(valor == 1)
+                {
+                    unidad.val('');
+                    $(".torre").hide();
+                    $(".apto").hide();
+                    $(".unidad").show();
+                    
+
+                    torre.val("none");
+                    apto.val("none");
+
+                }
+                else if (valor == 2) {
+                    torre.val("");
+                    apto.val("");
+                    $(".unidad").hide();
+                    $(".torre").show();
+                    $(".apto").show();
+
+                    unidad.val("none");
+
+                    
+
+                }else{
+                    $(".unidad").hide();
+                    $(".torre").hide();
+                    $(".apto").hide();                    
+                }
+
+            });
+
+            $("#video").click(function(e){
+                e.preventDefault();
+                $(".video").slideDown();
+                //$(".video").css({ "display": "block"}) 
+            });
+            $("#video2").click(function(){
+               $(".video").slideUp(); 
+            });
+
+            $("#btnPro").click(function(e){
+                    e.preventDefault();
+                    var valor = $('#postventa_proyecto option:selected').val();
+                    if(valor ==0 )
+                    {
+                        alert("debes seleccionar le proyecto");
+                        $(".part2").slideUp();
+                        $(".part1").slideDown();
+                    }
+                    else
+                    {
+                        
+                        $(".part1").slideUp();
+                        $(".part2").slideDown();
+                    }
+            });
+
+            //segundo boton siguiente
+            $("#btnProp").click(function(e){
+                e.preventDefault();
+                
+                var tipoinMueble = $('#postventa_tipoInmueble option:selected').val();
+                var fechaEntrega = $("#postventa_fechaentrega").val();
+                var tipodoc = $('#postventa_tipodocumento option:selected').val();
+                var numerodoc = $('#postventa_numerodocumento').val();
+                var nombreprop = $('#postventa_nombrepropietario').val();
+                var torre1 = $("#postventa_torreBloque").val();
+                var apto1 = $("#postventa_apartamento").val();
+                var unidad1 = $("#postventa_unidad").val();
+
+
+                if(tipoinMueble == 0  || fechaEntrega == '' || tipodoc == 0 || numerodoc == '' || nombreprop == '' || torre1 == '' || apto1 == '' || unidad1 == '')
+                {
+                    alert("Debes diligenciar todos los campos");
+                    return;
+                }else{
+                    $(".part2").slideUp();
+                    $(".part3").slideDown();    
+                }
+
+            });
+
+            //regresar a la primera seccion
+            $("#btnPropR").click(function(e){
+                e.preventDefault();
+                $(".part2").slideUp();
+                $(".part1").slideDown();
+            });
+
+            $("#btnDtR").click(function(){
+               $(".part3").slideUp();
+                $(".part2").slideDown(); 
+            });
+            
+
+            //validacion el envio del dformulario
+            $("#sender").click(function(){
+                var nombre = $("#postventa_nombreapellidosol").val();
+                var tipodocc = $('#postventa_tipodocumentosol option:selected').val();
+                var ndocumento = $("#postventa_numerodocumentosol").val();
+                var celular = $("#postventa_celular").val();
+                var fijo = $("#postventa_fijo").val();
+                var email = $("#postventa_email").val();
+                var tipoCli = $("#postventa_tipocliente").val();
+                var text = $("#postventa_solicitudarreglo").val();
+
+                if(nombre == '' || tipodocc == 0 || ndocumento == '' || celular == '' || fijo == '' || email == '' || tipoCli == 0 || text == '')
+                {
+                    alert("Debes diligenciar todos los campos");
+                    return false;
+                }
+                
+            });
+
+        });
+    </script>
+{% endblock %}

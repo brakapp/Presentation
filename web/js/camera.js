@@ -231,7 +231,7 @@
 	var loopMove;
 	for (loopMove=0;loopMove<amountSlide;loopMove++)
 	{
-		$('.cameraContents',content).append('<div class="cameraContent" />');
+		$('.cameraContents',content).append('<div class="cameraContent" id="img'+loopMove+'" onclick="redirected('+loopMove+');" />');
 		if(allLinks[loopMove]!=''){
 			//only for Wordpress plugin
 			var dataBox = $('> div ',elem).eq(loopMove).attr('data-box');
@@ -2193,6 +2193,8 @@
 	
 }
 
+
+
 })(jQuery);
 
 ;(function($){$.fn.cameraStop = function() {
@@ -2223,3 +2225,25 @@
 	}
 }
 })(jQuery);
+
+function redirected(page)
+{
+	switch(page){
+		case 0:
+			location.href='http://orbesa.com.co/home/proyecto/7';
+			break;
+		case 1:
+			location.href='http://orbesa.com.co/home/proyecto/6';
+			break;
+		case 2:
+			location.href='http://orbesa.com.co/home/proyecto/3';
+			break;
+		case 3:
+			location.href='http://orbesa.com.co/home/proyecto/5';
+			break;
+		case 4:
+			location.href='http://orbesa.com.co/home/proyecto/1';
+			break;	
+	}
+
+}

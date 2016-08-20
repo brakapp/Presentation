@@ -196,6 +196,11 @@
             border-radius: 10px;
         }
 
+        .camera_wrap, .slider
+        {
+            height: 350px !important;
+        }
+
     </style>
 
     <link href="{{ asset('css/least.min.css') }}" rel="stylesheet" />
@@ -347,6 +352,8 @@
                             <li><a href="#" id="gal">Galeria de Fotos</a></li>
                             <li><a href="#" id="vid">Video</a></li>
                             <li><a href="{{ path('home_contactar') }}" class="bot">Contacto</a></li>
+
+                            <li><a href="{{ path('home_page',{'page':'proyectos'}) }}">Regresar</a></li>
                         </ul>
 
 
@@ -381,7 +388,7 @@
                         <br>
                         <div>
                             <p>
-                                <strong>Direccion</strong>: Calle
+                                <strong>Dirección</strong>: {{ direccion }}
                             </p>
 
                         </div>

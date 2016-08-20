@@ -55,6 +55,33 @@ class Contacto
      */
     protected $dpto;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="acceppolitica", type="boolean")
+     */
+    private $acceppolitica;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="accepcel", type="boolean", nullable=true)
+     */
+    private $accepcel;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="accepmail", type="boolean", nullable=true)
+     */
+    private $accepmail;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Proyectos", inversedBy="contactos")
+     * @ORM\JoinColumn(name="proyecto_id", referencedColumnName="id")
+     */
+    protected $proyecto;
+
 
     /**
      * Get id
@@ -179,5 +206,74 @@ class Contacto
     public function getTelefono()
     {
         return $this->telefono;
+    }
+
+    /**
+     * Set acceppolitica
+     *
+     * @param boolean $acceppolitica
+     * @return Contacto
+     */
+    public function setAcceppolitica($acceppolitica)
+    {
+        $this->acceppolitica = $acceppolitica;
+
+        return $this;
+    }
+
+    /**
+     * Get acceppolitica
+     *
+     * @return boolean 
+     */
+    public function getAcceppolitica()
+    {
+        return $this->acceppolitica;
+    }
+
+    /**
+     * Set accepcel
+     *
+     * @param boolean $accepcel
+     * @return Contacto
+     */
+    public function setAccepcel($accepcel)
+    {
+        $this->accepcel = $accepcel;
+
+        return $this;
+    }
+
+    /**
+     * Get accepcel
+     *
+     * @return boolean 
+     */
+    public function getAccepcel()
+    {
+        return $this->accepcel;
+    }
+
+    /**
+     * Set accepmail
+     *
+     * @param boolean $accepmail
+     * @return Contacto
+     */
+    public function setAccepmail($accepmail)
+    {
+        $this->accepmail = $accepmail;
+
+        return $this;
+    }
+
+    /**
+     * Get accepmail
+     *
+     * @return boolean 
+     */
+    public function getAccepmail()
+    {
+        return $this->accepmail;
     }
 }

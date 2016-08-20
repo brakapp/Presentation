@@ -1,0 +1,523 @@
+{% extends 'base2.html.twig' %}
+{# receive vars from controller and set vars pages #}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('css/custom/animate.css') }}"/>
+    <link href="{{ asset('css/custom/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom/magnific-popup.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    
+    <style>
+        .camera_wrap
+        {
+            height: 350px !important;
+        }
+
+        .headtop
+        {
+            color: #355aa7 !important;
+            background-image: none !important;
+        }
+
+        .headtop a, .textstyle1{
+            color: #355aa7 !important;
+        }
+
+        h4, .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs li a,.nav-collapse_, .nav ul li a span
+        {
+            color: #355aa7 !important;
+        }
+
+        .link
+        {
+            background: #355aa7 !important;
+        }
+
+        .nav-collapse_ .nav>li>a
+        {
+            font-size: 13px !important;
+            padding:12px 15px !important;
+        }
+
+        .nav-collapse_ .nav>li>a:hover
+        {
+            color: #FFF !important;
+            text-decoration: underline;
+        }
+
+        .nav-collapse_ .nav>li>a .sf-sub-indicator
+        {
+            right: 3px !important;
+        }
+
+
+        .nav-collapse_ .nav ul li a
+        {
+            font-size: 10px !important;
+        }
+
+        .menu-lat
+        {
+            margin:0;
+            margin-top: 30px !important;
+            padding: 0;
+        }
+        .menu-lat li
+        {
+            border-bottom: thin solid #FFF;
+        }
+        .menu-lat li a
+        {
+            width: 150px;
+            display: block;
+            color: #FFF;
+            padding: 10px;
+            background: #355aa7;
+
+        }
+
+        .top
+        {
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .bot
+        {
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .lista, .lista2
+        {
+            margin: 0 0 0 18px;
+            padding: 0;
+            list-style-type: disc !important;
+        }
+
+        .lista2
+        {
+            margin: 0 !important;
+            list-style-type: none  !important;
+            margin-bottom: 10px !important;
+        }
+
+        /*.lista2 li:before{content: "-"}*/
+
+        @import url(http://fonts.googleapis.com/css?family=Istok+Web);
+        @keyframes slidy {
+            0% { left: 0%; }
+            20% { left: 0%; }
+            25% { left: -100%; }
+            45% { left: -100%; }
+            50% { left: -200%; }
+            100% { left:-200%; }
+        }
+        body, figure {
+            margin: 0; background: #101010;
+            font-family: Istok Web, sans-serif;
+            font-weight: 100;
+        }
+        div#captioned-gallery {
+            width: 100%; overflow: hidden;
+        }
+        figure.slider {
+            position: relative; width: 500%;
+            font-size: 0; animation: 30s slidy infinite;
+        }
+        figure.slider figure {
+            width: 20%; height: auto;
+            display: inline-block;  position: inherit;
+        }
+        figure.slider img { width: 100%; height: auto; }
+        figure.slider figure figcaption {
+            position: absolute; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            color: #fff; width: 100%;
+            font-size: 2rem; padding: .6rem;
+        }
+
+        #test{
+
+        }
+
+        .text
+        {
+            margin: 20px auto;
+            border: 1px dashed #C0C0C0;
+            width: 980px;
+            height: 400px;
+        }
+        .camera_wrap
+        {
+            height: 350px !important;
+        }
+
+        .cnt2, .cnt3, .cnt4, .vide
+        {
+            display: none;
+        }
+
+        .logotipe
+        {
+            display: none;
+        }
+
+        .none
+        {
+            display: none;
+        }
+
+        div#captioned-gallery {
+           width: 90% !important;
+           overflow: hidden;
+           margin-left: 7% !important;
+        }
+
+        #portfoliolist-three .portfolio, #portfoliolist-threes .portfolios
+        {
+            height: 200px !important;
+        }
+
+        .vide
+        {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        iframe
+        {
+            border-radius: 10px;
+        }
+
+    </style>
+
+    <link href="{{ asset('css/least.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/galery.css')  }}" media="all">
+{% endblock %}
+{% block javascripts %}
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('js/gmap3.min.js') }}"></script>
+
+    <script src="{{ asset('js/libs/least/least.min.js') }} "></script> 
+    
+
+    <script>
+        $(document).ready(function(){
+            $('.least-gallery').least();
+            var btnInfo = $("#info");
+            var btnUbicacion = $("#geo");
+            var btnPnl = $("#pnl");
+            var btnGal = $("#gal");
+            var btnVid = $("#vid");
+
+
+            btnInfo.click(function(e){
+                e.preventDefault();
+                $(".cnt2").hide();
+                $(".cnt3").hide();
+                $(".cnt4").hide();
+                $(".gale").hide();
+                $(".vide").hide();
+                $(".logotipe").hide();
+                $(".cnt1").slideDown();
+            });
+
+            btnUbicacion.click(function(e){
+                e.preventDefault();
+
+                $("#test").addClass('text');
+                $(".cnt1").hide()
+                $(".cnt3").hide();
+                $(".cnt4").hide();
+                $(".gale").hide();
+                $(".vide").hide();
+                $(".logotipe").show();
+                $(".cnt2").slideDown();
+
+            });
+            btnPnl.click(function(e){
+                e.preventDefault();
+                $(".cnt1").hide();
+                $(".cnt2").hide();
+                $(".cnt4").hide();
+                $(".vide").hide();
+                $(".logotipe").show();
+                $(".gale").slideDown();
+                $(".cnt3").slideDown();
+
+            });
+            btnGal.click(function(e){
+                e.preventDefault();
+                $(".cnt1").hide();
+                $(".cnt2").hide();
+                $(".cnt3").hide();
+                $(".vide").hide();
+                $(".logotipe").show();
+                $(".gale").slideDown();
+                $(".cnt4").slideDown();
+
+            });
+
+            btnVid.click(function(e){
+                e.preventDefault();
+                $(".cnt1").hide();
+                $(".cnt2").hide();
+                $(".cnt3").hide();
+                $(".gale").hide();
+                $(".cnt4").hide();
+                $(".logotipe").show();
+                $(".vide").slideDown();
+
+            });
+
+
+            $("#test").gmap3({
+                marker:{
+                    latLng: [ latitud, longitud],
+                    options:{
+                        draggable:true
+                    },
+                    events:{
+                        dragend: function(marker){
+                            $(this).gmap3({
+                                getaddress:{
+                                    latLng:marker.getPosition(),
+                                    callback:function(results){
+                                        var map = $(this).gmap3("get"),
+                                                infowindow = $(this).gmap3({get:"infowindow"}),
+                                                content = results && results[1] ? results && results[1].formatted_address : "no address";
+                                        if (infowindow){
+                                            infowindow.open(map, marker);
+                                            infowindow.setContent(content);
+                                        } else {
+                                            $(this).gmap3({
+                                                infowindow:{
+                                                    anchor:marker,
+                                                    options:{content: content}
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                },
+                map:{
+                    options:{
+                        zoom: 16
+                    }
+                }
+            });
+
+        });
+    </script>
+
+
+{% endblock %}
+
+{% block extracontent %}
+
+{% endblock %}
+{% block body %}
+{#variables#}
+
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content content1">
+        <div class="row-7 ">
+            <div class="container">
+                <div class="row policy">
+
+
+                    <article class="span12 pull-right" >
+                        <section id="least">
+                            <div  style="padding-top:40px !important;">
+                                <h1>Responsabilidad Social</h1>
+                            <!-- Least Gallery: Thumbnails -->
+                            <div id="portfoliolist-three">
+                                <div class="col-md-12">
+
+                                    <!-- 1 || Element with data-caption ||-->
+                                    <div class="portfolio app" data-cat="app">
+                                        <div class="portfolio-wrapper">
+                                            <div class="portfolio-hover">
+                                                <div class="image-caption">
+                                                    <a href="{{ asset('social/1.jpg') }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                </div>
+                                                {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                                <img src="{{ asset('social/1.jpg') }}" alt="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1 || Element with data-caption ||-->
+                                    <div class="portfolio app" data-cat="app">
+                                        <div class="portfolio-wrapper">
+                                            <div class="portfolio-hover">
+                                                <div class="image-caption">
+                                                    <a href="{{ asset('social/4.jpg') }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                </div>
+                                                {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                                <img src="{{ asset('social/4.jpg') }}" alt="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1 || Element with data-caption ||-->
+                                    <div class="portfolio app" data-cat="app">
+                                        <div class="portfolio-wrapper">
+                                            <div class="portfolio-hover">
+                                                <div class="image-caption">
+                                                    <a href="{{ asset('social/6.jpg') }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                </div>
+                                                {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                                <img src="{{ asset('social/6.jpg') }}" alt="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1 || Element with data-caption ||-->
+                                    <div class="portfolio app" data-cat="app">
+                                        <div class="portfolio-wrapper">
+                                            <div class="portfolio-hover">
+                                                <div class="image-caption">
+                                                    <a href="{{ asset('social/9.jpg') }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                </div>
+                                                {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                                <img src="{{ asset('social/9.jpg') }}" alt="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1 || Element with data-caption ||-->
+                                    <div class="portfolio app" data-cat="app">
+                                        <div class="portfolio-wrapper">
+                                            <div class="portfolio-hover">
+                                                <div class="image-caption">
+                                                    <a href="{{ asset('social/10.jpg') }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                </div>
+                                                {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                                <img src="{{ asset('social/10.jpg') }}" alt="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1 || Element with data-caption ||-->
+                                    <div class="portfolio app" data-cat="app">
+                                        <div class="portfolio-wrapper">
+                                            <div class="portfolio-hover">
+                                                <div class="image-caption">
+                                                    <a href="{{ asset('social/11.jpg') }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                </div>
+                                                {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                                <img src="{{ asset('social/11.jpg') }}" alt="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1 || Element with data-caption ||-->
+                                    <div class="portfolio app" data-cat="app">
+                                        <div class="portfolio-wrapper">
+                                            <div class="portfolio-hover">
+                                                <div class="image-caption">
+                                                    <a href="{{ asset('social/12.jpg') }}" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom" ><i class="fa fa-eye"></i ></a>
+                                                </div>
+                                                {#<h4 style="color: #FFF !important;"> {{ gal.id }}Texto de la imagen</h4>#}
+                                                <img src="{{ asset('social/12.jpg') }}" alt="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                                </div>
+                            </div>
+                        </section>
+                       
+                    </article>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{{ asset('js/custom/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/custom/mixitup.js') }}"></script>
+    <script src="{{ asset('js/custom/jquery.magnific-popup.js') }}"></script>
+    <script type="text/javascript">
+    $('.image-caption a').tooltip();
+
+    $(function () {
+
+        var filterList = {
+
+            init: function () {
+
+                // MixItUp plugin
+                // http://mixitup.io
+                $('#portfoliolist-three').mixitup({
+                    targetSelector: '.portfolio',
+                    filterSelector: '.filter',
+                    effects: ['fade'],
+                    easing: 'snap',
+                    // call the hover effect
+                    onMixEnd: filterList.hoverEffect()
+                });
+
+                $('#portfoliolist-threes').mixitup({
+                    targetSelector: '.portfolios',
+                    filterSelector: '.filter',
+                    effects: ['fade'],
+                    easing: 'snap',
+                    // call the hover effect
+                    onMixEnd: filterList.hoverEffect()
+                });
+
+            },
+
+            hoverEffect: function () {
+                $("[rel='tooltip']").tooltip();
+                // Simple parallax effect
+                $('#portfoliolist-three .portfolio .portfolio-hover').hover(
+                function(){
+                    $(this).find('.image-caption').slideDown(250); //.fadeIn(250)
+                },
+                function(){
+                    $(this).find('.image-caption').slideUp(250); //.fadeOut(205)
+                }
+            );
+
+                $('#portfoliolist-threes .portfolios .portfolios-hover').hover(
+                function(){
+                    $(this).find('.image-caption').slideDown(250); //.fadeIn(250)
+                },
+                function(){
+                    $(this).find('.image-caption').slideUp(250); //.fadeOut(205)
+                }
+            );
+            }
+
+        };
+
+        // Run the show!
+        filterList.init();
+
+
+    });
+
+    $( document ).ready(function() {
+       $('.magnefig').each(function(){
+            $(this).magnificPopup({
+                    type:'image',
+                    removalDelay: 300,
+                    mainClass: 'mfp-fade'
+               })
+        });
+    });
+    </script>
+{% endblock %}
+

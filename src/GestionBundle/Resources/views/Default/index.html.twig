@@ -1,11 +1,69 @@
 {% extends 'base.html.twig' %}
 {% block extracontent %}
 
+    <style>
+    #mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9000;
+  background-color: #000;
+  display: none;
+}
+
+#boxes .window {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 440px;
+  height: 200px;
+  display: none;
+  z-index: 9999;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#boxes #dialog {
+  width: 510px;
+  height: 640px;
+  padding: 10px;
+  background-color: #ffffff;
+  font-family: 'Segoe UI Light', sans-serif;
+  font-size: 15pt;
+}
+
+#dialog
+{
+    top:0 !important;
+}
+
+#dialog > img
+{
+    width: 500px;
+    border-radius: 5px;
+}
+#popupfoot {
+  font-size: 16pt;
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  width: 250px;
+  left: 250px;
+  color:#FFF !important;
+}
+
+.close .agree
+{
+    color:#FFF !important;
+}
+    </style>
+    
     <!--============================== slider =================================-->
     <div class="row">
         <div class="span1"></div>
         <div class="span6">
-            <div class="slider">
+            <div class="slider" style="width:100%;z-index:0;">
                 <div class="camera_wrap" style="display: block; margin-bottom: 13px; height: 350px; width: 1000px;">
                     <div data-src="img/slide-1.jpg">
                     </div>
@@ -15,6 +73,13 @@
                     </div>
                     <div data-src="img/slide-4.jpg">
                     </div>
+                    <div data-src="img/slide-5.jpg">
+                    </div>
+                    <div data-src="img/imagen1.jpg">
+                    </div>
+		   <div data-src="img/caba1e.jpg">
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -26,3 +91,5 @@
 
 
 {% endblock %}
+
+

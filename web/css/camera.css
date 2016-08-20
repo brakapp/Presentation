@@ -42,6 +42,7 @@
 }
 .camera_wrap img {
 	max-width: none !important;
+	height: 361px !important;
 }
 .camera_fakehover {
 	height: 100%;
@@ -151,16 +152,14 @@
     line-height:12px;
 }
 .camera_pag{
-    margin-top: 11px;
     height: 13px;
     position: relative;
-	background: url(../img/bgcamerapag.jpg) repeat-x;
+
 }
 .camera_pag_ul{
     position: ;
     text-align: center;
     width: 100%;
-    height: 13px;
     overflow: hidden;    
 }
 .camera_wrap .camera_pag .camera_pag_ul li {
@@ -258,7 +257,7 @@ left:46px
     
     
 	.camera_wrap,.slider{
-	   height:350px;
+	   height:390px;
     } 
     
     .camera_caption_bg{
@@ -302,3 +301,9 @@ left:46px
 } 
 
 
+.pag_nav_0, .pag_nav_1, .pag_nav_2, .pag_nav_3, .pag_nav_4, .pag_nav_5, .pag_nav_6, .pag_nav_7, .pag_nav_8
+{
+	width: 15px !important;
+	height: 15px !important;
+	border-radius: 20px;
+}

@@ -280,7 +280,7 @@ class Curriculums
         // sanitize it at least to avoid any security issues
 
         //capturo al extencion original del archivo
-        $ext = $this->file->guessClientExtension();
+        $ext = $this->file->getClientOriginalExtension();
         $new_name = $this->getUploadDir().'/'. mt_rand(0,9999999999).".".$ext;
 
 
@@ -288,7 +288,7 @@ class Curriculums
         $this->file->move($this->getUploadRootDir($basepath), $new_name );
 
         // set the path property to the filename where you'ved saved the file
-        $this->setUrlcurriculum($new_name);
+        $this->setUrldocumento($new_name);
 
         // clean up the file property as you won't need it anymore
         $this->file = null;

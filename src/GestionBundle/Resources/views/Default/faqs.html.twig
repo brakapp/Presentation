@@ -1,0 +1,550 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}FAQS{% endblock %}
+
+{% block extracontent %}
+
+
+
+{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('acc/bootstrap.css') }}" type="text/css" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+
+
+.panel-title > a 
+{
+    color: #333;
+}
+.panel-heading
+{
+    padding-top: 0 !important; 
+}
+.panel-default > .panel-heading {
+    background-color: #efefef !important;
+    /*background-image: -webkit-linear-gradient(top,#f5f5f5 0,#e8e8e8 100%);
+    background-image: -o-linear-gradient(top,#f5f5f5 0,#e8e8e8 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#e8e8e8));
+    background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+    background-repeat: repeat-x;*/
+
+}
+
+
+.indicator
+{
+    
+    
+    width: 100px;
+    height: 100px;
+    background: silver;
+    text-align: center;
+}
+
+a {
+   outline: 0;
+}
+/*styles fr indicator number*/
+.demo
+{
+ 
+    display: inline-block;
+    background-color: #333;
+    padding: 30px 0px; 
+    position: relative;
+    width: 99%;
+    display: inline-block;
+    background-color: #ccc;
+    position: relative;
+    border: 4px solid #333;
+    text-align: center;
+}
+
+.demo:after {
+
+    content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+
+    border: 20px solid transparent;
+    border-top-color: #333;
+
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.txt
+{
+    display: inline-block;
+    top: 0;
+       
+    height: 100px;
+    background: red;
+    margin-top: 0;
+}
+
+.panel {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+.indicador
+{
+    padding: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    text-align: center;
+    float: left;
+    
+background: rgba(248,80,50,1);
+background: -moz-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(231,56,39,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(248,80,50,1)), color-stop(100%, rgba(231,56,39,1)));
+background: -webkit-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(231,56,39,1) 100%);
+background: -o-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(231,56,39,1) 100%);
+background: -ms-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(231,56,39,1) 100%);
+background: linear-gradient(to right, rgba(248,80,50,1) 0%, rgba(231,56,39,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
+
+    border-radius: 200px;
+}
+
+.num
+{
+    float: left;
+    display: block;
+    display: inline-block;
+    padding: 15px;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.panel-title > a
+{
+    padding: 5px;
+    display: block;
+    background: #FFF !important;
+    border-radius: 30px;
+    border-bottom: 1px solid #3B3B3B;
+}
+
+
+h4.panel-title
+{
+    padding: 0 !important;
+}
+
+</style>
+    <!--============================== content =================================-->
+
+    <div id="content" class="extra-content" >
+        <div class="row-6">
+
+            
+<div id="bright"></div>
+
+            <div class="container">
+                <div class="row">
+                    <article class="span12">
+                        <h1>Preguntas Frecuentes</h1>
+                        
+                            <hr>
+
+                        <div class="bs-example">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <h4 class="panel-title">
+                        
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        <div class="content">
+                            <div class="indicador">1</div>
+                            <span class="num"> ¿Cómo es el proceso de compra en Orbe S.A.S Construcciones?</span>
+                            <div class="clear"></div>
+                        </div>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <p>
+                        Está dividido en tres etapas, en todas ellas nuestras asesoras comerciales serán las encargadas de acompañarlo(a) durante todo este proceso, las etapas las explicaremos a continuación:
+                    </p>
+                    <h4>1. Separación del inmueble</h4>
+                    <p>
+                        Una vez seleccionado el inmueble de su interés, acordada y aprobada la negociación, el primer paso será cancelar el valor de la separación, para lo cual el personal comercial le dará las indicaciones respectivas. Seguidamente usted deberá aportar en sala de ventas el soporte de dicho pago con fotocopia del documento de identidad de o de los promitente(s) comprador(es) y le expediremos su recibo de caja, como soporte. Una vez realizado este proceso el precio del inmueble acordado será congelado y de ahí en adelante deberá continuar con los pagos acordados para la cuota inicial.
+                    </p>
+                    <h4>2. Promesa de compra venta</h4>
+                    <p>
+                        El segundo paso será la firma de la promesa de compra venta, este documento legaliza la negociación del inmueble, donde se contemplan cláusulas que contienen la descripción, precio, forma de pago, fechas de entrega, servicios públicos con los cuales la constructora entrega el inmueble prometido en venta, así como la cláusula de penalización por incumplimiento de cualquiera de las partes (comprador y vendedor). De ahí en adelante deberá continuar con los pagos acordados para la cuota inicial.
+
+
+
+                    </p> 
+                    <h4>3.Entrega </h4>
+                    <p>
+                        Una vez esté totalmente cancelado el valor del inmueble, es decir se encuentre a paz y salvo con la constructora, nuestro asesor comercial le dará a conocer la fecha y hora en que el personal asignado le realizará la entrega de su inmueble. Recibirá de la constructora el manual de comprador, donde explicaremos aspectos importantes que deberá tener en cuenta relacionados con el mantenimiento, garantías y planos de su inmueble. 
+                    </p>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        <div class="content">
+                            <div class="indicador">2</div>
+                            <span class="num"> Que medios de pago puedo utilizar para pagar la cuota inicial?</span>
+                            <div class="clear"></div>
+                        </div>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                   <p>
+                       Puede realizarlo a través de transferencia electrónica o consignación por ventanilla, en los siguientes Bancos: Bancolombia, Davivienda, Banco de Occidente, Banco de Bogotá y BBVA.
+Nota: Para cualquier trámite o eventualidad debe acercarse a nuestro equipo comercial quienes estarán dispuestas a colaborarle y asesorarle en todo lo pertinente.
+                   </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    <div class="content">
+                            <div class="indicador">3</div>
+                            <span class="num"> ¿Cómo puedo pagar la cuota inicial?</span>
+                            <div class="clear"></div>
+                        </div>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>La cuota inicial se cancela en cuotas mensuales de acuerdo al valor del inmueble y al plazo estipulado en la promesa de compra venta. Usted puede usar sus recursos propios (cuotas mensuales),  liquidación de cesantías, primas legales y extra legales, ahorros en cuentas AFC y/o CDTs entre otros.  Le recomendamos hablar con anterioridad con nuestro asesor comercial quien le indicara el trámite y el proceso a seguir. </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+
+                         <div class="content">
+                            <div class="indicador">4</div>
+                            <span class="num">¿Qué pasa si incumplo en mi forma de pago?</span>
+                            <div class="clear"></div>
+                        </div>
+                   
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>La Constructora tiene un área de cartera encargado de recordar y realizar llamados de atención para aquellos clientes que por uno u otro motivo incumplen con los acuerdos de pago. La Constructora tendrá el derecho de desistir el negocio.</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+
+                    <div class="content">
+                            <div class="indicador">5</div>
+                            <span class="num">¿Qué pasa si me niegan mi crédito hipotecario?</span>
+                            <div class="clear"></div>
+                        </div>
+
+                        </a>
+
+
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Usted puede acercarse a nuestro equipo comercial para que pueda revisar las alternativas de financiación que tenemos para usted. Y si es el caso cambiarse de proyecto.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                    <div class="content">
+                            <div class="indicador">6</div>
+                            <span class="num">¿Qué sucede en caso de fallecimiento?</span>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>En caso de fallecimiento de la persona que firma la Promesa de Compraventa, sus herederos tendrán los mismos derechos y obligaciones sobre el inmueble prometido en venta.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                        <div class="content">
+                            <div class="indicador">7</div>
+                            <span class="num">¿Qué debo hacer si no puedo ir a recibir el inmueble?</span>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Puede hablar con su asesor comercial y designar a un tercero mediante una autorización autenticada, puede enviarla de forma física, por correo electrónico o vía fax.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+                    <div class="content">
+                            <div class="indicador">8</div>
+                            <span class="num">¿Puedo ceder mi promesa de compra venta y/o escrituración a nombre de un tercero?</span>
+                            <div class="clear"></div>
+                        </div>
+    
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>La Constructora no permite cesiones de derecho.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
+                        <div class="content">
+                            <div class="indicador">9</div>
+                            <span class="num">¿Es posible cambiar mi inmueble prometido en venta por otro del mismo o de diferente proyecto?</span>
+                            <div class="clear"></div>
+                        </div>
+
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseNine" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Es posible cambiar de inmueble siempre y cuando haya disponibilidad. El nuevo negocio estará sujeto a las condiciones actuales de cada proyecto.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTeen">
+                    <div class="content">
+                            <div class="indicador">10</div>
+                            <span class="num">¿Quién asume los gastos de escrituración y registro, y cómo los puedo financiar?</span>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseTeen" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Tenga en cuenta que los gastos que le corresponden a la Constructora son el 1% de la venta, el resto de gastos (notariales y de registro) son asumidos por el cliente. 
+En caso de requerir financiación le informamos que la Constructora directamente no financia esto, pero puede consultar que Bancos le permiten incluir esto dentro de sus créditos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">
+                    <div class="content">
+                            <div class="indicador">11</div>
+                            <span class="num">Si una vez se haya desistido del negocio y tenga claro el valor a devolver,  ¿en cuanto tiempo me devuelven el dinero? </span>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>La Constructora devuelve los dineros acordados en un plazo no mayor a 90 días hábiles.</p>
+                </div>
+            </div>
+        </div>
+
+        <h1>Servicio de Atención Postventa</h1>
+        <hr>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseUno">
+                        <div class="content">
+                            <div class="indicador">1</div>
+                            <span class="num">¿Cómo realizo una  Solicitud de postventa?</span>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseUno" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>
+                        El propietario deberá radicar la solicitud cuando se presentan problemas en su inmueble después de la entrega realizada por la constructora. Esta solicitud la puede realizar exclusivamente a través de la página web www.orbesa.com,.co, debe informar con precisión la identificación del inmueble, el nombre del proyecto, una breve descripción del problema, nombres, teléfono, correo electrónico de contacto de la persona que redacta la comunicación, como se muestra en el paso a paso que puede seguir en el siguiente <a href="" class="button" id="video">link</a>
+
+No se atenderán las quejas o reclamos presentados en cualquier otra forma (ya sea de manera verbal o informal ante cualquier personal de obra o funcionario de la constructora). La persona que presente la queja debe asegurarse que se ha efectuado un registro por escrito de su reclamación. 
+
+LA CONSTRUCTORA una vez presentada la solicitud y evaluada la situación, programará una visita y analizará la queja, los elementos constructivos y determinará si ésta es o no objeto de atención en virtud de la garantía, dentro de los quince (15) días siguientes al recibo del reclamo en la constructora, la cual coordinará con el propietario y el responsable del área de post venta, la fecha y en lo posible la hora en que se ejecutarán los trabajos necesarios para su adecuada atención y oportuna reparación. 
+
+                    </p>
+
+
+
+                    <a href="" class="button" id="video2" style="display:none;"> Cerrar Video</a>
+                    <br>
+
+                    <div class="video" style="text-align:center; margin-top:40px; display:none;">
+                        <video width="400" controls>
+                            <source src="{{ asset('media/postventa.mp4') }}" type="video/mp4">
+
+                            Tu navegador no soporta videos html5
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseDos">
+                        <div class="content">
+                            <div class="indicador">2</div>
+                            <span class="num">¿Qué  tiempo máximo tengo para presentar mi solicitud de atención postventa? </span>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                </h4>
+            </div>
+            <div id="collapseDos" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>
+                        Se atenderán los reportes que se presenten dentro del término de la garantía.
+
+Tenga en cuenta las siguientes garantías: 
+
+Eléctrica: Cualquier modificación que realice de inmediato perderá la garantía por este concepto.
+
+Mantoedin: un año después de la entrega del inmueble.
+
+Acabados: un año
+
+Estructura: 10 años de garantía
+
+Tanque elevado: un año de garantía
+
+Fisuras y grietas: Toda estructura sufre un proceso de asentamiento esperado dentro de los rangos establecidos por los diseñadores a cargo, por lo tanto, es normal que se presenten aparentes fisuras, el cual solo será atendido al final del primer año de la entrega de la edificación como garantía. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTres">
+                        <div class="content">
+                            <div class="indicador">2</div>
+                            <span class="num">¿Quién es el personal encargado de atender la reclamación? </span>
+                            <div class="clear"></div>
+                        </div>
+                         </a>
+                </h4>
+            </div>
+            <div id="collapseTres" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Los reclamos serán atendidos por la persona  designada por la empresa. El nombre y contacto de ésa persona se le informará a cada propietario. Estos trabajos se realizarán en horarios habituales de trabajo y el propietario deberá facilitar que se puedan ejecutar las labores. Ante la imposibilidad de parte del propietario de estar presente en la vivienda cuando se requiera trabajar, éste determinará una persona responsable, que pueda permanecer en la vivienda durante las jornadas que se programen. En muchas ocasiones se requerirán de varios días para hacer el trabajo y así se informará al propietario por el personal de la obra. 
+
+Una vez concluido los trabajos de reparación o la atención de la garantía, se le informará el día y hora para la recepción de los mismos. En caso de que no pueda estar presente se solicitará que delegue a una persona para tal fin. Si por cualquier motivo existe renuencia del propietario para firmar el acta de recibo, se dejará constancia de ello en el acta ante testigo y se documentará. A partir de dicha fecha se entenderá atendida la garantía. 
+
+La responsabilidad de la empresa se limita a las garantías estipuladas, siempre y cuando no se efectúen reparaciones, cambios o reformas por cuenta del propietario en el período de tiempo indicado para las mismas, que afecten los elementos que conforman el inmueble. 
+
+Recuerde que cualquier modificación que efectué en muros del inmueble inmediatamente pierde su garantía.</p>
+                </div>
+            </div>
+        </div>
+
+       
+
+    </div>
+
+    
+
+
+    
+</div>
+                    </article>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            var send = $("#send");
+            var doc = $("#check");
+
+            send.attr('disabled','disabled');
+
+            doc.click(function(){
+                send.removeAttr('disabled');
+
+            });
+
+            $("#video").click(function(e){
+                e.preventDefault();
+                $(".video").slideDown();
+                //$(".video").css({ "display": "block"})
+            });
+            $("#video2").click(function(){
+                $(".video").slideUp();
+            });
+
+
+        });
+    </script>
+{% endblock %}

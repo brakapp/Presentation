@@ -21,6 +21,20 @@ class ProyectosAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+        // get the current Image instance
+        $image = $this->getSubject();
+
+        // use $fileFieldOptions so we can add other options to the field
+        $fileFieldOptions = array('required' => false);
+        if ($image && ($webPath = $image->getWebPath())) {
+            // get the container so the full path to the image can be set
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request')->getBasePath().'/'.$webPath;
+
+            // add a 'help' option containing the preview's img tag
+            $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="admin-preview" />';
+        }
         /*$formMapper
             ->add('nombre')
             ->add('latitud')
@@ -44,8 +58,13 @@ class ProyectosAdmin extends Admin
             ->add('latitud')
             ->add('longitud')
             ->add('direccion')
+            ->add('estado')
             ->add('icono')
             ->add('video')
+            #->add('file','file',$fileFieldOptions,  array(
+            #    'required'=>'false',
+            #    'label' => 'Icono del Proyecto'
+            #))
             ->add('file','file', array(
                 'required'=>'false',
                 'label' => 'Icono del Proyecto'
@@ -91,7 +110,7 @@ class ProyectosAdmin extends Admin
 
     public function saveFile($icono) {
         $basepath = $this->getRequest()->getBasePath();
-        $icono->upload($basepath);
+        //$icono->upload($basepath);
     }
 
 }

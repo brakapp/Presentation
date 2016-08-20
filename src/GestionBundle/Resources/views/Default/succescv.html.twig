@@ -130,6 +130,37 @@
             color: #FFF;
         }
 
+        .dsb2, .dsb3
+        {
+            margin: 0 auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #999;
+            border-radius: 100px;
+            color: #FFF;
+            -webkit-border-radius: 100px;
+            border-color: #00498F;
+            -webkit-animation: pulsate 2s ease-out;
+            -webkit-animation-iteration-count: infinite; 
+            opacity: 0.0
+        }
+        .dsb3
+        {
+            -webkit-animation: pulsate 2s ease !important;
+            -webkit-animation-iteration-count: infinite !important; 
+            opacity: 0.0
+        }
+        @-webkit-keyframes pulsate {
+            0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+            50% {opacity: 1.0;}
+            100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+        }
+
         .check
         {
             text-align: center;
@@ -168,7 +199,8 @@
 
             <p>{{ mensaje }}
                 </p>
-            <br>
+           <div class="dsb2"></div>
+            <div class="dsb3"></div>
             <p class="check">
                 <i class="fa fa-check fa-3x dsb"></i><br>
                 <a class='glyphicon glyphicon-plus btn' href='{{ path('home_page') }}'>Regresar</a>
